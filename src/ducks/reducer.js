@@ -71,7 +71,7 @@ export function getUserBoards(userid) {
     return {
       type: REQ_BOARDS,
       payload: axios.get(`/api/getUserBoards/${userid}`)
-      .then(response => console.log(response.data))
+      .then(response => response.data)
     }
   }
   export function getUserTeams(userid) {

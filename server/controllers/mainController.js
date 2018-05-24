@@ -5,6 +5,19 @@ let teams = []
 let boards = [
   {
     id: 1,
+    name: "first",
+    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
+    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"]
+  },
+  {
+    id: 2,
+    name: "second",
+    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
+    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"]
+  },
+  {
+    id: 3,
+    name: "third",
     ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
     allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"]
   }

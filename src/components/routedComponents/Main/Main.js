@@ -7,6 +7,8 @@ import Teams from './childComponents/Teams'
 import { Route, Switch } from "react-router-dom"
 import LeftPanel from "./childComponents/LeftPanel"
 
+import './main.css'
+
 class Main extends Component {
 
 
