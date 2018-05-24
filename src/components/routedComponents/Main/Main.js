@@ -6,9 +6,7 @@ import {getUserInfo} from './../../../ducks/reducer'
 import LeftPanel from "./childComponents/LeftPanel"
 
 class Main extends Component {
-  componentDidMount() {
-    this.props.getUserInfo(this.props.user.uid)
-  }
+
 
   render() {
       console.log(this.props)

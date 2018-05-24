@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { getUserBoards } from "../../../../ducks/reducer"
 
 class Boards extends Component {
+  componentDidMount() {
+    this.props.getUserBoards(this.props.user.uid)
+  }
 
-
-render() {
-return(
-<div>
-    
-</div>
-)}
+  render() {
+    return <div />
+  }
 }
-export default Boards
+const mapStateToProps = state => state
+export default connect(mapStateToProps, {
+  getUserBoards
+})(Boards)
