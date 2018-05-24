@@ -7,12 +7,15 @@ class Teams extends Component {
         this.props.getUserTeams(this.props.user.uid)
       }
 
-render() {
-return(
-<div>
-</div>
-)}
+
+      render() {
+    const teams = this.props.userTeamList.map(team => team.name)
+    return <div>List of teams:
+    {teams}</div>
+  }
 }
+
+
 const mapStateToProps = state => state
 export default connect(mapStateToProps, {
     getUserTeams

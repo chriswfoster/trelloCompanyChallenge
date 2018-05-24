@@ -8,7 +8,10 @@ class Boards extends Component {
   }
 
   render() {
-    return <div />
+    const boards = this.props.userBoardList.map(board => board.name)
+    return <div>
+    List of boards:
+    {boards}</div>
   }
 }
 const mapStateToProps = state => state

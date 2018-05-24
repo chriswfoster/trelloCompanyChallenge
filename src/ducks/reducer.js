@@ -2,6 +2,8 @@ import axios from "axios"
 
 // This is an action creator.
 const REQ_USER = "REQ_USER"
+const REQ_BOARDS = "REQ_BOARDS"
+const REQ_TEAMS = "REQ_TEAMS"
 
 // This is my initial state. To start, we'll begin with just an empty user object, the list of boards they can see, and their team list.
 const initialState = {
@@ -39,6 +41,20 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         user: action.payload
       })
+      case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
+      return Object.assign({}, state, { isLoading: true })
+    case REQ_BOARDS + "_FULFILLED":
+      return Object.assign({}, state, {
+        isLoading: false,
+        userBoardList: action.payload
+      })
+      case REQ_TEAMS + "_PENDING": //pending tag is applied by redux promise middleware
+      return Object.assign({}, state, { isLoading: true })
+    case REQ_TEAMS + "_FULFILLED":
+      return Object.assign({}, state, {
+        isLoading: false,
+        userTeamList: action.payload
+      })
 
     default:
       return state
@@ -51,10 +67,17 @@ export function sendUserInfo(user) {
     payload: user
   }
 }
-export function getUserInfo(userid) {
+export function getUserBoards(userid) {
     return {
-      type: REQ_USER,
-      payload: axios.get(`/api/getUserInfo/${userid}`)
+      type: REQ_BOARDS,
+      payload: axios.get(`/api/getUserBoards/${userid}`)
+      .then(response => console.log(response.data))
+    }
+  }
+  export function getUserTeams(userid) {
+    return {
+      type: REQ_TEAMS,
+      payload: axios.get(`/api/getUserTeams/${userid}`)
       .then(response => console.log(response.data))
     }
   }
