@@ -1,0 +1,23 @@
+.Login-main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+.Login-main p {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.Login-main button {
+    width: 20vw;
+    height: 10vh;
+    font-size: 1.5vw;
+}
+.Login-main button img {
+    margin-right: 2vw;
+}

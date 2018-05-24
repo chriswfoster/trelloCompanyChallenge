@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// This is an action creator. 
-const REQ_USER = "REQ_USER";
+// This is an action creator.
+const REQ_USER = "REQ_USER"
 
 // This is my initial state. To start, we'll begin with just an empty user object.
 const initialState = {
@@ -10,11 +10,8 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case REQ_USER + "_PENDING": //pending tag is applied by redux promise middleware
-      return Object.assign({}, state, { isLoading: true })
-    case REQ_USER + "_FULFILLED":
+    case REQ_USER:
       return Object.assign({}, state, {
-        isLoading: false,
         user: action.payload
       })
 
@@ -23,11 +20,9 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function getUserInfo() {
+export function sendUserInfo(user) {
   return {
     type: REQ_USER,
-    payload: axios.get("/api/me").then(response => {
-        return response;
-    })
+    payload: user
   }
 }
