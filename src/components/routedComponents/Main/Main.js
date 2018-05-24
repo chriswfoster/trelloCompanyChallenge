@@ -2,14 +2,16 @@ import React, { Component } from "react"
 import axios from 'axios'
 import { connect } from "react-redux"
 
+import {getUserInfo} from './../../../ducks/reducer'
 import LeftPanel from "./childComponents/LeftPanel"
 
 class Main extends Component {
   componentDidMount() {
-console.log(this.props)
+    this.props.getUserInfo(this.props.user.uid)
   }
 
   render() {
+      console.log(this.props)
     return (
       <div>
         Test2
@@ -18,4 +20,7 @@ console.log(this.props)
     )
   }
 }
-export default Main
+const mapStateToProps = state => state
+export default connect(mapStateToProps, {
+    getUserInfo
+})(Main)

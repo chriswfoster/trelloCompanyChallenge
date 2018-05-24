@@ -11,7 +11,7 @@ app.use(json());
 app.use(cors());
 
 
-// app.get('/api/getUserBoards/:id', )
+app.get('/api/getUserInfo/', ctrl.getUserInfo)
 app.post('/api/addToUserList', ctrl.addToUserList)
 
 
