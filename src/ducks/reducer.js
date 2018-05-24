@@ -4,7 +4,7 @@ import axios from "axios"
 const REQ_USER = "REQ_USER";
 
 // This is my initial state. To start, we'll begin with just an empty user object.
-intialState = {
+const initialState = {
   user: {}
 }
 
@@ -27,7 +27,7 @@ export function getUserInfo() {
   return {
     type: REQ_USER,
     payload: axios.get("/api/me").then(response => {
-      return getAllYourPosts(response.data.user_id) && response.data
+        return response;
     })
   }
 }
