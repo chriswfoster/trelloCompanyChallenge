@@ -12,6 +12,8 @@ app.use(cors());
 
 
 app.get('/api/getUserInfo/', ctrl.getUserInfo)
+app.get('/api/getUserBoards/:id', ctrl.getBoards)
+app.get('/api/getUserTeams/:id', ctrl.getTeams)
 app.post('/api/addToUserList', ctrl.addToUserList)
 
 

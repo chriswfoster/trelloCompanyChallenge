@@ -10,7 +10,7 @@ class Boards extends Component {
   render() {
     const boards = this.props.userBoardList.map(board => board.name)
     return <div>
-    List of boards:
+    Personal Boards
     {boards}</div>
   }
 }

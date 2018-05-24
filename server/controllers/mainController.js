@@ -22,11 +22,22 @@ const addToUserList = function(req, res) {
 
 
 //Arrow function, for fun I guess.
-const getUserInfo = () => {
+const getUserInfo = (req, res) => {
 
+}
+
+const getTeams = function(req, res) {
+console.log(req.params.id)
+
+}
+
+const getBoards = function(req, res) {
+console.log(req.params.id)
 }
 
 module.exports = {
   addToUserList,
-  getUserInfo
+  getUserInfo,
+  getTeams,
+  getBoards
 }
