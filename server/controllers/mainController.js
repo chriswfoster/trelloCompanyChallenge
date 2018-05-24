@@ -20,19 +20,17 @@ const addToUserList = function(req, res) {
   res.status(200).json(req.body.user)
 }
 
-
 //Arrow function, for fun I guess.
-const getUserInfo = (req, res) => {
-
-}
+const getUserInfo = (req, res) => {}
 
 const getTeams = function(req, res) {
-console.log(req.params.id)
-
+  console.log(req.params.id)
 }
 
 const getBoards = function(req, res) {
-console.log(req.params.id)
+  console.log(req.params.id)
+  let boardList = boards.filter(board => board.ownerId === req.params.id)
+  res.status(200).json(boardList)
 }
 
 module.exports = {
