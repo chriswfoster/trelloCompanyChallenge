@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import { connect } from "react-redux"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import axios from 'axios'
 
 class LeftPanel extends Component {
 constructor(){
     super()
 }
 
-componentDidMount(){
-    axios.get(`/api/getUserBoards/${this.props.user.uid}`)
-}
 
 render() {
     console.log(this.props.user)

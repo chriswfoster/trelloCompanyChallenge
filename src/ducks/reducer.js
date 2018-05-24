@@ -3,9 +3,11 @@ import axios from "axios"
 // This is an action creator.
 const REQ_USER = "REQ_USER"
 
-// This is my initial state. To start, we'll begin with just an empty user object.
+// This is my initial state. To start, we'll begin with just an empty user object, the list of boards they can see, and their team list.
 const initialState = {
-  user: {}
+  user: {},
+  userBoardList: [],
+  userTeamList: []
 }
 
 export default function reducer(state = initialState, action) {

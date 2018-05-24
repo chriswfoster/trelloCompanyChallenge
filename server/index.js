@@ -11,7 +11,8 @@ app.use(json());
 app.use(cors());
 
 
-app.get('/api/getUserBoards/:id', ctrl.addUserList)
+// app.get('/api/getUserBoards/:id', )
+app.post('/api/addToUserList', ctrl.addToUserList)
 
 
 app.listen(PORT, () => console.log(`We are now listening to port ${PORT}`));
