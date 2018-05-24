@@ -1,13 +1,12 @@
 import React, { Component } from "react"
 import axios from 'axios'
+import { connect } from "react-redux"
 
 import LeftPanel from "./childComponents/LeftPanel"
 
 class Main extends Component {
   componentDidMount() {
-    axios
-      .get(`/api/getUserBoards/${this.props.user.uid}`)
-      .then(response => console.log(response))
+console.log(this.props)
   }
 
   render() {
