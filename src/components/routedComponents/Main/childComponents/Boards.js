@@ -9,11 +9,11 @@ class Boards extends Component {
 
   render() {
     console.log(this.props)
-    const boards = this.props.userBoardList.map(board => <div className="Main-boardbuttons"><p>{board.name}</p></div>)
+    const boards = this.props.userBoardList.map((board, i )=> <div className="Main-boardbuttons Main-bluebuttons" key={i}><p>{board.name}</p></div>)
     return (
       <div>
         Personal Boards
-        <div className="boardsFlex">{boards}</div>
+        <div className="boardsFlex">{boards}<div className="Main-boardbuttons Main-createboardbutton"><p>Create new board...</p></div></div>
       </div>
     )
   }

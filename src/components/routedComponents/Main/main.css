@@ -2,26 +2,35 @@
     position: absolute;
     right: 0vh;
     bottom: 0vh;
-    background-color: grey;
     height: 90vh;
     width: 70vw;
-
 }
 
 .Main-boardbuttons{
-    width: 12vw;
-    height: 15vh;
-    background-color: #026aa7;
+    width: 10vw;
+    height: 11vh;
     color: white;
     font-size: 1rem;
     padding-left: .5vw;
     margin-left: 1vw;
     cursor: pointer;
-   
+   border-radius: 3px;
 }
-.Main-boardbuttons:hover{
+.Main-bluebuttons{
+    background-color: var(--blue-bg-color);
+}
+.Main-bluebuttons:hover{
     background-color: #005b90;
 }
+.Main-createboardbutton{
+    background-color: #a5a5a5;
+}
+.Main-createboardbutton:hover{
+    background-color: #949494;
+}
+
+
+
 .boardsFlex{
     width: 100%;
     display: flex;
