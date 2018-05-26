@@ -8,7 +8,7 @@ import "./lists.css"
 
 class Lists extends Component {
   render() {
-    // const list = this.props.viewingBoard.cards.map((listitem, i)=> <p>listItem</p>)
+    const list = this.props.viewingBoard.lists.map((listitem, i)=> <p>listItem</p>)
     console.log(this.props)
     return <div>Something here</div>
   }

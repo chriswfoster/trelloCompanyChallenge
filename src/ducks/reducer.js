@@ -34,7 +34,9 @@ const initialState = {
   },
   userBoardList: [],
   userTeamList: [],
-  viewingBoard: {}
+  viewingBoard: {
+    lists: []
+  }
 }
 
 export default function reducer(state = initialState, action) {
