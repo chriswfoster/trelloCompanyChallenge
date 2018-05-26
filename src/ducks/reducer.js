@@ -40,7 +40,7 @@ const initialState = {
     ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
     allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"],
     lists: [
-      { name: "primary", cards: ["hi", "test", "whatever"] },
+      { name: "primary", cards: ["hi", "test", "whatever", "really really long string just to see what this thing does under a big string load such at this"] },
       { name: "lists", cards: ["hi", "test", "whatever"] },
       { name: "here", cards: ["hi", "test", "whatever"] }
     ]
