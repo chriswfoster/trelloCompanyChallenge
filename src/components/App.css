@@ -1,5 +1,8 @@
 :root {
-    --blue-bg-color: #026aa7; 
+    /* Utilizing CSS variables */
+    --blue-bg-color: #026aa7;
+    --lightlue-bg-color: #0079bf;
+    --greycard-bg-color: #d6dadc;
 }
 
 

@@ -1,0 +1,48 @@
+.Lists-primary {
+  background-color: var(--lightlue-bg-color);
+}
+
+.CardList-cardFlex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+.CardList-cardFlex p {
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+  border-radius: 3px;
+  width: 254px;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 0.5vh;
+}
+
+.Lists-cardFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.ListMenu-primary {
+  height: 5vh;
+  background-color: var(--lightlue-bg-color);
+  color: rgb(255, 255, 255);
+}
+
+.CardList-primary {
+  width: 270px;
+  height: 91vh;
+  margin: 0 5px;
+}
+.CardList-secondary {
+  background-color: var(--greycard-bg-color);
+  border-radius: 5px;
+}

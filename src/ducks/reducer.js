@@ -34,8 +34,16 @@ const initialState = {
   },
   userBoardList: [],
   userTeamList: [],
-  viewingBoard: {
-    lists: []
+  viewingBoard: {/////////// --------------////////////// delete the filler data below
+    id: 1,
+    name: "first",
+    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
+    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"],
+    lists: [
+      { name: "primary", cards: ["hi", "test", "whatever"] },
+      { name: "lists", cards: ["hi", "test", "whatever"] },
+      { name: "here", cards: ["hi", "test", "whatever"] }
+    ]
   }
 }
 
@@ -47,12 +55,12 @@ export default function reducer(state = initialState, action) {
       })
     case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
       return Object.assign({}, state, { isLoading: true })
-    case REQ_BOARDS + "_FULFILLED":
+    case REQ_BOARDS + "_FULFILLED": // when promise is fulfilled, we can apply the data to state
       return Object.assign({}, state, {
         isLoading: false,
         userBoardList: action.payload
       })
-    case REQ_TEAMS + "_PENDING": //pending tag is applied by redux promise middleware
+    case REQ_TEAMS + "_PENDING":
       return Object.assign({}, state, { isLoading: true })
     case REQ_TEAMS + "_FULFILLED":
       return Object.assign({}, state, {
