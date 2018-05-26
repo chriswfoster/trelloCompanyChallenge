@@ -4,6 +4,7 @@ import axios from "axios"
 const REQ_USER = "REQ_USER"
 const REQ_BOARDS = "REQ_BOARDS"
 const REQ_TEAMS = "REQ_TEAMS"
+const VIEWING_BOARD = "VIEWING_BOARD"
 
 // This is my initial state. To start, we'll begin with just an empty user object, the list of boards they can see, and their team list.
 const initialState = {
@@ -32,7 +33,8 @@ const initialState = {
     uid: "U186LBop0RSz9eitxecVQX0HjH42"
   },
   userBoardList: [],
-  userTeamList: []
+  userTeamList: [],
+  viewingBoard: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -41,20 +43,22 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         user: action.payload
       })
-      case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
+    case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
       return Object.assign({}, state, { isLoading: true })
     case REQ_BOARDS + "_FULFILLED":
       return Object.assign({}, state, {
         isLoading: false,
         userBoardList: action.payload
       })
-      case REQ_TEAMS + "_PENDING": //pending tag is applied by redux promise middleware
+    case REQ_TEAMS + "_PENDING": //pending tag is applied by redux promise middleware
       return Object.assign({}, state, { isLoading: true })
     case REQ_TEAMS + "_FULFILLED":
       return Object.assign({}, state, {
         isLoading: false,
         userTeamList: action.payload
       })
+    case VIEWING_BOARD:
+      return Object.assign({}, state, { viewingBoard: action.payload })
 
     default:
       return state
@@ -68,16 +72,24 @@ export function sendUserInfo(user) {
   }
 }
 export function getUserBoards(userid) {
-    return {
-      type: REQ_BOARDS,
-      payload: axios.get(`/api/getUserBoards/${userid}`)
+  return {
+    type: REQ_BOARDS,
+    payload: axios
+      .get(`/api/getUserBoards/${userid}`)
       .then(response => response.data)
-    }
   }
-  export function getUserTeams(userid) {
-    return {
-      type: REQ_TEAMS,
-      payload: axios.get(`/api/getUserTeams/${userid}`)
+}
+export function getUserTeams(userid) {
+  return {
+    type: REQ_TEAMS,
+    payload: axios
+      .get(`/api/getUserTeams/${userid}`)
       .then(response => console.log(response.data))
-    }
   }
+}
+export function boardView(board) {
+  return {
+    type: VIEWING_BOARD,
+    payload: board
+  }
+}
