@@ -36,7 +36,8 @@ const cardSource = {
       index: props.index,
       listId: props.listId,
       card: props.card
-    }
+	}
+	props.updateReducer()
   },
 
   endDrag(props, monitor) {
@@ -93,7 +94,7 @@ const cardTarget = {
       props.moveCard(dragIndex, hoverIndex)
 
       // Note: we're mutating the monitor item here!
-      // Generally it's better to avoid mutations,
+      // generally it's better to avoid mutations,
       // but it's good here for the sake of performance
       // to avoid expensive index searches.
       monitor.getItem().index = hoverIndex

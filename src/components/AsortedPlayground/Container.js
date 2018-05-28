@@ -11,8 +11,12 @@ class Container extends Component {
     this.state = { cards: props.list }
   }
 
-  componentWillReceiveProps(){
-	  
+  shouldComponentUpdate(nextProps){
+	  console.log(nextProps)
+
+	//Please ignore this ternary lol. 
+	//For some reason on first card drag, it won't update correctly.
+	return nextProps.list !== this.state.cards ? true : true
   }
 
   pushCard(card) {
@@ -61,7 +65,6 @@ class Container extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { cards } = this.state
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver
