@@ -34,9 +34,11 @@ class AsortingPlayground extends Component {
     return (
       <div style={{ ...style }}>
         {this.props.viewingBoard.lists.map((list, i) => (
-          <Container listDetails={list} key={i} id={i} />
+          <CardList listDetails={list} key={i} id={i} />
         ))}
-   
+        {/* <Container id={1} list={listOne} />
+        <Container id={2} list={listTwo} />
+        <Container id={3} list={listThree} /> */}
       </div>
     )
   }
