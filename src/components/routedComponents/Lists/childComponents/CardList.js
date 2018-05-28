@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import update from "immutability-helper"
 import Card from "./Card"
-import AddCard from './AddCard'
+import AddCard from "./AddCard"
 import { connect } from "react-redux"
 import { sendUpdate } from "../../../../ducks/reducer"
 import { DropTarget } from "react-dnd"
@@ -9,16 +9,21 @@ import { DropTarget } from "react-dnd"
 class ListMenu extends Component {
   constructor(props) {
     super(props)
-    this.state = { cards: props.list }
+    this.state = { cards: props.viewingBoard.lists[this.props.id].cards }
   }
 
-  shouldComponentUpdate(nextProps) {
-    console.log(nextProps)
-
-    //Please ignore this ternary lol.
-    //For some reason on first card drag, it won't update correctly.
-    return nextProps.list !== this.state.cards ? true : true
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.list)
+    // this.setState({ cards: next.list })
   }
+
+  // shouldComponentUpdate(nextProps) {
+  //   console.log(nextProps)
+
+  //   //Please ignore this ternary lol.
+  //   //For some reason on first card drag, it won't update correctly.
+  //   return nextProps.list !== this.state.cards ? true : true
+  // }
 
   pushCard(card) {
     this.setState(
@@ -68,12 +73,11 @@ class ListMenu extends Component {
     const { cards } = this.state
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver
-    
 
     // const backgroundColor = isActive ? "lightgreen" : "lightblue"
 
     return connectDropTarget(
-      <div className="CardList-primary" >
+      <div className="CardList-primary">
         <p className="CardList-name">{this.props.name}</p>
         {this.state.cards.map((card, i) => {
           return (
@@ -89,7 +93,7 @@ class ListMenu extends Component {
             />
           )
         })}
-        <AddCard />
+        <AddCard listId={this.props.id} />
       </div>
     )
   }

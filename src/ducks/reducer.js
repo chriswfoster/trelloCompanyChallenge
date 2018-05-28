@@ -154,10 +154,13 @@ export function addCardTextHandler(e) {
   }
 }
 
-export function addCardSubmit(e) {
+export function addCardSubmit(e, listId, reducerObj, text) {
   e.preventDefault()
+  e.target.reset()
+  const tempObj = reducerObj
+  tempObj.lists[listId].cards.push(text)
   return {
-    type: ADD_CARD_SUBMIT,
-    payload: "Hi"
+    type: PUSH_UPDATE,
+    payload: tempObj
   }
 }
