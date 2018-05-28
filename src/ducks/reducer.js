@@ -111,7 +111,7 @@ export function boardView(board) {
 /////////// ------- card functionality ------ /////////
 export function moveCard(dragIndex, hoverIndex, cards) {
     // const { cards } = this.state;		
-
+console.log(cards)
     const dragCard = cards[dragIndex];
 
     this.setState(update(this.state, {
