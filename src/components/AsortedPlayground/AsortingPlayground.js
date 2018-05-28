@@ -34,7 +34,7 @@ class AsortingPlayground extends Component {
     return (
       <div style={{ ...style }}>
         {this.props.viewingBoard.lists.map((list, i) => (
-          <CardList listDetails={list} key={i} id={i} />
+          <Container list={list} key={i} id={i} />
         ))}
         {/* <Container id={1} list={listOne} />
         <Container id={2} list={listTwo} />
@@ -43,4 +43,8 @@ class AsortingPlayground extends Component {
     )
   }
 }
-export default DragDropContext(HTML5Backend)(AsortingPlayground)
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {
+
+  })(DragDropContext(HTML5Backend)(AsortingPlayground))
