@@ -1,5 +1,7 @@
 .Lists-primary {
   background-color: var(--lightlue-bg-color);
+  width: 100vw;
+  height: 100vh;
 }
 
 .CardList-cardFlex {
@@ -11,13 +13,13 @@
   align-content: stretch;
 }
 
-
 .Lists-cardFlex {
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: baseline;
   align-content: stretch;
 }
 
@@ -29,20 +31,25 @@
 
 .CardList-primary {
   width: 270px;
-  height: 91vh;
+  height: auto;
   margin: 0 5px;
   background-color: var(--greycard-bg-color);
-}
-.CardList-secondary {
- 
   border-radius: 5px;
 }
-.Card-styling{
-  border-radius: 3px;
+.CardList-secondary {
+  border-radius: 5px;
+}
+.Card-styling {
+  border-radius: 5px;
   padding: 0.5rem 1rem;
-  margin: .5rem;
+  margin: 0.5rem;
   background-color: white;
   cursor: move;
   color: black;
-  box-shadow: 0px 1px 0px  #979797;
+  box-shadow: 0px 1px 0px #979797;
+}
+
+.CardList-name {
+  margin-left: 1vw;
+  font-weight: bold;
 }

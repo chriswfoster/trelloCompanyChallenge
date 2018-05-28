@@ -94,6 +94,8 @@ export default function reducer(state = initialState, action) {
   }
 }
 
+
+
 export function sendUserInfo(user) {
   return {
     type: REQ_USER,
@@ -124,8 +126,6 @@ export function boardView(board) {
 }
 
 /////////// ------- card functionality ------ /////////
-
-
 
 export function sendUpdate(listId, cards, reducerObj) {
   const tempObj = reducerObj

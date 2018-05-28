@@ -18,7 +18,7 @@ class Lists extends Component {
         <ListMenu boardName={this.props.viewingBoard.name} />
         <div className="Lists-cardFlex">
           {this.props.viewingBoard.lists.map((list, i) => (
-            <CardList list={list.cards} key={i} id={i} />
+            <CardList list={list.cards} name={list.name} key={i} id={i} />
           ))}
         </div>
       </div>

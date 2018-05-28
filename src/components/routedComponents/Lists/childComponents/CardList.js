@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import update from "immutability-helper"
 import Card from "./Card"
+import AddCard from './AddCard'
 import { connect } from "react-redux"
 import { sendUpdate } from "../../../../ducks/reducer"
 import { DropTarget } from "react-dnd"
@@ -67,16 +68,13 @@ class ListMenu extends Component {
     const { cards } = this.state
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver
-    const style = {
-      width: "200px",
-      height: "90vh",
-      borderRadius:"3px"
-    }
+    
 
     // const backgroundColor = isActive ? "lightgreen" : "lightblue"
 
     return connectDropTarget(
-      <div className="CardList-primary" style={{ ...style }}>
+      <div className="CardList-primary" >
+        <p className="CardList-name">{this.props.name}</p>
         {this.state.cards.map((card, i) => {
           return (
             <Card
@@ -91,6 +89,7 @@ class ListMenu extends Component {
             />
           )
         })}
+        <AddCard />
       </div>
     )
   }
