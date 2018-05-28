@@ -10,17 +10,7 @@
   align-items: center;
   align-content: stretch;
 }
-.CardList-cardFlex p {
-  background-color: rgb(245, 245, 245);
-  text-align: center;
-  border-radius: 3px;
-  width: 254px;
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin-top: 0.5vh;
-}
+
 
 .Lists-cardFlex {
   display: flex;
@@ -41,8 +31,18 @@
   width: 270px;
   height: 91vh;
   margin: 0 5px;
+  background-color: var(--greycard-bg-color);
 }
 .CardList-secondary {
-  background-color: var(--greycard-bg-color);
+ 
   border-radius: 5px;
+}
+.Card-styling{
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  margin: .5rem;
+  background-color: white;
+  cursor: move;
+  color: black;
+  box-shadow: 0px 1px 0px  #979797;
 }
