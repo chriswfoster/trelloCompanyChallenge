@@ -1,16 +1,9 @@
+/* /////////// -------   List component   ------- /////////// */
+
 .Lists-primary {
   background-color: var(--lightlue-bg-color);
   width: 100vw;
   height: 100vh;
-}
-
-.CardList-cardFlex {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
 }
 
 .Lists-cardFlex {
@@ -23,11 +16,15 @@
   align-content: stretch;
 }
 
+/* /////////// -------   ListMenu component   ------- /////////// */
+
 .ListMenu-primary {
   height: 5vh;
   background-color: var(--lightlue-bg-color);
   color: rgb(255, 255, 255);
 }
+
+/* /////////// -------   CardList component   ------- /////////// */
 
 .CardList-primary {
   width: 270px;
@@ -39,6 +36,23 @@
 .CardList-secondary {
   border-radius: 5px;
 }
+
+.CardList-name {
+  margin-left: 1vw;
+  font-weight: bold;
+}
+
+.CardList-cardFlex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+/* /////////// -------   Card component css   ------- /////////// */
+
 .Card-styling {
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -49,7 +63,5 @@
   box-shadow: 0px 1px 0px #979797;
 }
 
-.CardList-name {
-  margin-left: 1vw;
-  font-weight: bold;
-}
+/* /////////// -------   AddCard component css   ------- /////////// */
+

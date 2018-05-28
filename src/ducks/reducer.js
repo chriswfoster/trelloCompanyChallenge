@@ -1,13 +1,15 @@
 import axios from "axios"
 import update from "immutability-helper"
 
-// This is an action creator.
+// This is an action constants.
 const REQ_USER = "REQ_USER"
-const REQ_BOARDS = "REQ_BOARDS"
 const REQ_TEAMS = "REQ_TEAMS"
-const VIEWING_BOARD = "VIEWING_BOARD"
+const REQ_BOARDS = "REQ_BOARDS"
 const PUSH_UPDATE = "PUSH_UPDATE"
 const REMOVE_UPDATE = "REMOVE_UPDATE"
+const VIEWING_BOARD = "VIEWING_BOARD"
+const ADD_CARD_SUBMIT = "ADD_CARD_SUBMIT"
+const ADD_CARD_TEXT_HANDLER = "ADD_CARD_TEXT_HANDLER"
 
 // This is my initial state. To start, we'll begin with just an empty user object, the list of boards they can see, and their team list.
 const initialState = {
@@ -56,21 +58,31 @@ const initialState = {
       { name: "lists", cards: ["hi", "test", "whatever"] },
       { name: "here", cards: ["hi", "test", "whatever"] }
     ]
-  }
+  },
+  addCardText: ""
 }
 
+// My reducer.
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case REQ_USER:
       return Object.assign({}, state, {
         user: action.payload
       })
+
     case PUSH_UPDATE:
       return Object.assign({}, state, {
         viewingBoard: action.payload
       })
+
     case REMOVE_UPDATE:
       return Object.assign({}, state, { viewingBoard: action.payload })
+
+    case VIEWING_BOARD:
+      return Object.assign({}, state, { viewingBoard: action.payload })
+
+    case ADD_CARD_TEXT_HANDLER:
+      return Object.assign({}, state, { addCardText: action.payload })
 
     case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
       return Object.assign({}, state, { isLoading: true })
@@ -86,15 +98,13 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         userTeamList: action.payload
       })
-    case VIEWING_BOARD:
-      return Object.assign({}, state, { viewingBoard: action.payload })
 
     default:
       return state
   }
 }
 
-
+// Action creators.
 
 export function sendUserInfo(user) {
   return {
@@ -125,7 +135,7 @@ export function boardView(board) {
   }
 }
 
-/////////// ------- card functionality ------ /////////
+/////////// -------   card functionality  ------- ///////////
 
 export function sendUpdate(listId, cards, reducerObj) {
   const tempObj = reducerObj
@@ -133,5 +143,21 @@ export function sendUpdate(listId, cards, reducerObj) {
   return {
     type: PUSH_UPDATE,
     payload: tempObj
+  }
+}
+
+/////////// -------       AddCard       ------- ///////////
+export function addCardTextHandler(e) {
+  return {
+    type: ADD_CARD_TEXT_HANDLER,
+    payload: e.target.value
+  }
+}
+
+export function addCardSubmit(e) {
+  e.preventDefault()
+  return {
+    type: ADD_CARD_SUBMIT,
+    payload: "Hi"
   }
 }

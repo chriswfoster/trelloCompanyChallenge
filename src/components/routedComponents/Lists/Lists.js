@@ -7,6 +7,7 @@ import HTML5Backend from "react-dnd-html5-backend"
 import CardList from "./childComponents/CardList"
 import Header from "./../../Header/Header"
 import ListMenu from "./childComponents/ListMenu"
+import AddList from './childComponents/AddList'
 
 import "./lists.css"
 
@@ -20,6 +21,7 @@ class Lists extends Component {
           {this.props.viewingBoard.lists.map((list, i) => (
             <CardList list={list.cards} name={list.name} key={i} id={i} />
           ))}
+          <AddList />
         </div>
       </div>
     )
