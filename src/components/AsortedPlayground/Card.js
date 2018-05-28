@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
+import { connect } from "react-redux"
+import { moveCard, removeCard } from "../../ducks/reducer"
 import flow from 'lodash/flow';
 
 const style = {
@@ -14,7 +16,7 @@ const style = {
 
 class Card extends Component {
 
-	render() {
+	render(props) {
 		console.log(this.props.card)
 		const { card, isDragging, connectDragSource, connectDropTarget } = this.props;
 		const opacity = isDragging ? 0 : 1;
@@ -42,7 +44,7 @@ const cardSource = {
 		const dropResult = monitor.getDropResult();	
 
 		if ( dropResult && dropResult.listId !== item.listId ) {
-			props.removeCard(item.index);
+			this.props.removeCard(item.index);
 		}
 	}
 };
@@ -53,6 +55,7 @@ const cardTarget = {
 		const dragIndex = monitor.getItem().index;
 		const hoverIndex = props.index;
 		const sourceListId = monitor.getItem().listId;	
+		console.log(props)
 
 		// Don't replace items with themselves
 		if (dragIndex === hoverIndex) {
@@ -87,7 +90,8 @@ const cardTarget = {
 
 		// Time to actually perform the action
 		if ( props.listId === sourceListId ) {
-			props.moveCard(dragIndex, hoverIndex);
+			console.log(props)
+			props.moveCard(dragIndex, hoverIndex, );
 
 			// Note: we're mutating the monitor item here!
 			// Generally it's better to avoid mutations,
@@ -98,7 +102,9 @@ const cardTarget = {
 	}
 };
 
-export default flow(
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {moveCard, removeCard})(flow(
 	DropTarget("CARD", cardTarget, connect => ({
 		connectDropTarget: connect.dropTarget()
 	})),
@@ -106,4 +112,4 @@ export default flow(
 		connectDragSource: connect.dragSource(),
 		isDragging: monitor.isDragging()
 	}))
-)(Card);
+)(Card))

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 import Card from './Card';
+import { connect } from "react-redux"
 import { DropTarget } from 'react-dnd';
  
 class Container extends Component {
@@ -8,7 +9,7 @@ class Container extends Component {
 	constructor(props) {
 		super(props);		
 		this.state = { cards: props.list };
-		
+
 	}
  
 	pushCard(card) {
@@ -18,16 +19,17 @@ class Container extends Component {
 			}
 		}));
 	}
- 
-	removeCard(index) {		
-		this.setState(update(this.state, {
-			cards: {
-				$splice: [
-					[index, 1]
-				]
-			}
-		}));
-	}
+
+	// In reducer now
+	// removeCard(index) {		
+	// 	this.setState(update(this.state, {
+	// 		cards: {
+	// 			$splice: [
+	// 				[index, 1]
+	// 			]
+	// 		}
+	// 	}));
+	// }
  
 	moveCard(dragIndex, hoverIndex) {
 		const { cards } = this.state;		
@@ -64,8 +66,10 @@ class Container extends Component {
 							index={i}
 							listId={this.props.id}
 							card={card}														
-							removeCard={this.removeCard.bind(this)}
-							moveCard={this.moveCard.bind(this)} />
+							// removeCard={this.removeCard.bind(this)} 
+									// these should be in reducer now
+							// moveCard={this.moveCard.bind(this)} 
+							/>
 					);
 				})}
 			</div>
@@ -83,8 +87,10 @@ const cardTarget = {
 	}
 }
  
-export default DropTarget("CARD", cardTarget, (connect, monitor) => ({
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {})(DropTarget("CARD", cardTarget, (connect, monitor) => ({
 	connectDropTarget: connect.dropTarget(),
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop()
-}))(Container);
+}))(Container))

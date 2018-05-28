@@ -1,4 +1,5 @@
 import axios from "axios"
+import update from 'immutability-helper';
 
 // This is an action creator.
 const REQ_USER = "REQ_USER"
@@ -102,4 +103,41 @@ export function boardView(board) {
     type: VIEWING_BOARD,
     payload: board
   }
+}
+
+
+
+
+/////////// ------- card functionality ------ /////////
+export function moveCard(dragIndex, hoverIndex, cards) {
+    // const { cards } = this.state;		
+
+    const dragCard = cards[dragIndex];
+
+    this.setState(update(this.state, {
+        cards: {
+            $splice: [
+                [dragIndex, 1],
+                [hoverIndex, 0, dragCard]
+            ]
+        }
+    }));
+}
+
+export function pushCard(card) {
+    this.setState(update(this.state, {
+        cards: {
+            $push: [ card ]
+        }
+    }));
+}
+
+export function removeCard(index) {		
+    this.setState(update(this.state, {
+        cards: {
+            $splice: [
+                [index, 1]
+            ]
+        }
+    }));
 }
