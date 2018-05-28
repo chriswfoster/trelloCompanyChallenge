@@ -30,7 +30,7 @@ class AsortingPlayground extends Component {
       { id: 8, text: "Item 8" },
       { id: 9, text: "Item 9" }
     ]
-
+    console.log(this.props)
     return (
       <div style={{ ...style }}>
         {this.props.viewingBoard.lists.map((list, i) => (
@@ -45,6 +45,6 @@ class AsortingPlayground extends Component {
 }
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {
-
-  })(DragDropContext(HTML5Backend)(AsortingPlayground))
+export default connect(mapStateToProps, {})(
+  DragDropContext(HTML5Backend)(AsortingPlayground)
+)
