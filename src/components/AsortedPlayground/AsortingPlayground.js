@@ -35,7 +35,6 @@ class AsortingPlayground extends Component {
     //   { id: 9, text: "Item 9" }
     // ]
 
-    console.log(monitor)
     return (
       <div style={{ ...style }}>
         {this.props.viewingBoard.lists.map((list, i) => (
