@@ -2,12 +2,17 @@ import React, { Component } from "react"
 import update from "immutability-helper"
 import Card from "./Card"
 import { connect } from "react-redux"
+import { sendUpdate } from "../../ducks/reducer"
 import { DropTarget } from "react-dnd"
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.state = { cards: props.list }
+  }
+
+  componentWillReceiveProps(){
+	  
   }
 
   pushCard(card) {
@@ -18,10 +23,10 @@ class Container extends Component {
         }
       })
     )
+   this.updateReducer()
   }
 
   removeCard(index) {
-    console.log(this.state.cards)
     this.setState(
       update(this.state, {
         cards: {
@@ -29,12 +34,14 @@ class Container extends Component {
         }
       })
     )
+	this.updateReducer()
+
   }
 
   moveCard(dragIndex, hoverIndex) {
     const { cards } = this.state
     const dragCard = cards[dragIndex]
-    console.log(this.state.cards)
+
     this.setState(
       update(this.state, {
         cards: {
@@ -42,10 +49,19 @@ class Container extends Component {
         }
       })
     )
+    console.log("move", this.props.id)
+  }
+
+  updateReducer(){
+	this.props.sendUpdate(
+		this.props.id,
+		this.state.cards,
+		this.props.viewingBoard
+	  )
   }
 
   render() {
-	  console.log(this.state)
+    console.log(this.props)
     const { cards } = this.state
     const { canDrop, isOver, connectDropTarget } = this.props
     const isActive = canDrop && isOver
@@ -68,7 +84,8 @@ class Container extends Component {
               card={card}
               cards={this.props.list.cards}
               removeCard={this.removeCard.bind(this)}
-              moveCard={this.moveCard.bind(this)}
+			  moveCard={this.moveCard.bind(this)}
+			  updateReducer={this.updateReducer.bind(this)}
             />
           )
         })}
@@ -89,7 +106,7 @@ const cardTarget = {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {})(
+export default connect(mapStateToProps, { sendUpdate })(
   DropTarget("CARD", cardTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),

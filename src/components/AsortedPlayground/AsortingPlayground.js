@@ -6,6 +6,10 @@ import HTML5Backend from "react-dnd-html5-backend"
 import Container from "./Container"
 
 class AsortingPlayground extends Component {
+
+
+
+
   render() {
     const style = {
       display: "flex",
@@ -30,7 +34,7 @@ class AsortingPlayground extends Component {
     //   { id: 8, text: "Item 8" },
     //   { id: 9, text: "Item 9" }
     // ]
-    console.log(this.props)
+
     return (
       <div style={{ ...style }}>
         

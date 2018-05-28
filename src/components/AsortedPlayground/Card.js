@@ -15,7 +15,6 @@ const style = {
 
 class Card extends Component {
   render(props) {
-    console.log(this.props.card)
     const {
       card,
       isDragging,
@@ -32,6 +31,7 @@ class Card extends Component {
 
 const cardSource = {
   beginDrag(props) {
+    console.log("beginDrag")
     return {
       index: props.index,
       listId: props.listId,
@@ -40,12 +40,14 @@ const cardSource = {
   },
 
   endDrag(props, monitor) {
+    console.log("endDrag", props.listId)
     const item = monitor.getItem()
     const dropResult = monitor.getDropResult()
 
     if (dropResult && dropResult.listId !== item.listId) {
       props.removeCard(item.index)
     }
+    props.updateReducer()
   }
 }
 
@@ -54,7 +56,6 @@ const cardTarget = {
     const dragIndex = monitor.getItem().index
     const hoverIndex = props.index
     const sourceListId = monitor.getItem().listId
-    console.log(props)
 
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
@@ -89,7 +90,6 @@ const cardTarget = {
 
     // Time to actually perform the action
     if (props.listId === sourceListId) {
-      console.log(props)
       props.moveCard(dragIndex, hoverIndex)
 
       // Note: we're mutating the monitor item here!
