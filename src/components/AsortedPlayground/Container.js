@@ -8,6 +8,7 @@ class Container extends Component {
 	constructor(props) {
 		super(props);		
 		this.state = { cards: props.list };
+		
 	}
  
 	pushCard(card) {
@@ -48,18 +49,18 @@ class Container extends Component {
 		const isActive = canDrop && isOver;
 		const style = {
 			width: "200px",
-			height: "404px",
+			height: "90vh",
 			border: '1px dashed gray'
 		};
  
-		const backgroundColor = isActive ? 'lightgreen' : '#FFF';
+		const backgroundColor = isActive ? 'lightgreen' : 'lightblue';
  
 		return connectDropTarget(
 			<div style={{...style, backgroundColor}}>
 				{this.props.list.cards.map((card, i) => {
 					return (
 						<Card 
-							key={card.id}
+							key={card.i}
 							index={i}
 							listId={this.props.id}
 							card={card}														

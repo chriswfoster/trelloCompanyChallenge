@@ -8,18 +8,20 @@ const style = {
 	padding: '0.5rem 1rem',
 	margin: '.5rem',
 	backgroundColor: 'white',
-	cursor: 'move'
+	cursor: 'move',
+	color: 'black'
 };
 
 class Card extends Component {
 
 	render() {
+		console.log(this.props.card)
 		const { card, isDragging, connectDragSource, connectDropTarget } = this.props;
 		const opacity = isDragging ? 0 : 1;
 
 		return connectDragSource(connectDropTarget(
 			<div style={{ ...style, opacity }}>
-				{card.text}
+				{card}
 			</div>
 		));
 	}
