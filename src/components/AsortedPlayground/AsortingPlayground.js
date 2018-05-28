@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+import { connect } from "react-redux"
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
 import Container from './Container';
@@ -33,6 +34,7 @@ class AsortingPlayground extends Component{
  
 		return (
 			<div style={{...style}}>
+			{}
 				<Container id={1} list={listOne} />
 				<Container id={2} list={listTwo} />
 				<Container id={3} list={listThree} />
