@@ -41,7 +41,7 @@ class Login extends Component {
           <img src={require("./sign-in-with-google.svg")} />Log in with Google
         </button>
         {/* Below, I'm just rendering a redirect if something on the user object appears in props. */}
-        {this.props.user.displayName ? <Redirect to="/main" /> : null}
+        {this.props.user.displayname ? <Redirect to="/main" /> : null}
       </div>
     )
   }

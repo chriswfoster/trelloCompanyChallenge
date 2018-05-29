@@ -114,9 +114,10 @@ export default function reducer(state = initialState, action) {
 // Action creators.
 
 export function sendUserInfo(user) {
+  console.log(user)
   return {
     type: REQ_USER,
-    payload: user
+    payload: user[0]
   }
 }
 export function getUserBoards(userid) {
