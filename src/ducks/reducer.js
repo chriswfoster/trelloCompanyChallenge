@@ -1,15 +1,15 @@
 import axios from "axios"
-import update from "immutability-helper"
 
 // This is an action constants.
+const ADD_LIST = "ADD_LIST"
 const REQ_USER = "REQ_USER"
 const REQ_TEAMS = "REQ_TEAMS"
 const REQ_BOARDS = "REQ_BOARDS"
 const PUSH_UPDATE = "PUSH_UPDATE"
-const REMOVE_UPDATE = "REMOVE_UPDATE"
 const VIEWING_BOARD = "VIEWING_BOARD"
 const ADD_CARD_SUBMIT = "ADD_CARD_SUBMIT"
 const ADD_CARD_TEXT_HANDLER = "ADD_CARD_TEXT_HANDLER"
+const ADD_LIST_TEXT_HANDLER = "ADD_LIST_TEXT_HANDLER"
 
 // This is my initial state. To start, we'll begin with just an empty user object, the list of boards they can see, and their team list.
 const initialState = {
@@ -59,7 +59,8 @@ const initialState = {
       { name: "here", cards: ["hi", "test", "whatever"] }
     ]
   },
-  addCardText: ""
+  addCardText: "",
+  addListText: ""
 }
 
 // My reducer.
@@ -71,19 +72,24 @@ export default function reducer(state = initialState, action) {
       })
 
     case PUSH_UPDATE:
-    console.log(initialState.viewingBoard)
+      console.log(initialState.viewingBoard)
       return Object.assign({}, state, {
         viewingBoard: action.payload
       })
-
-    case REMOVE_UPDATE:
-      return Object.assign({}, state, { viewingBoard: action.payload })
 
     case VIEWING_BOARD:
       return Object.assign({}, state, { viewingBoard: action.payload })
 
     case ADD_CARD_TEXT_HANDLER:
       return Object.assign({}, state, { addCardText: action.payload })
+
+    case ADD_LIST:
+      return Object.assign({}, state, {
+        viewingBoard: action.payload
+      })
+
+    case ADD_LIST_TEXT_HANDLER:
+      return Object.assign({}, state, { addListText: action.payload })
 
     case REQ_BOARDS + "_PENDING": //pending tag is applied by redux promise middleware
       return Object.assign({}, state, { isLoading: true })
@@ -147,7 +153,7 @@ export function sendUpdate(listId, cards, reducerObj) {
   }
 }
 
-/////////// -------       AddCard       ------- ///////////
+/////////// -------       AddCard/AddList       ------- ///////////
 export function addCardTextHandler(e) {
   return {
     type: ADD_CARD_TEXT_HANDLER,
@@ -157,11 +163,29 @@ export function addCardTextHandler(e) {
 
 export function addCardSubmit(e, listId, reducerObj, text) {
   e.preventDefault()
-  e.target.reset()
   const tempObj = reducerObj
   tempObj.lists[listId].cards.push(text)
+  e.target.reset()
   return {
     type: PUSH_UPDATE,
+    payload: tempObj
+  }
+}
+
+export function addListTextHandler(e) {
+  return {
+    type: ADD_LIST_TEXT_HANDLER,
+    payload: e.target.value
+  }
+}
+
+export function addListSubmit(e, reducerObj, text) {
+  e.preventDefault()
+  const tempObj = reducerObj
+  tempObj.lists.push({ name: text, cards: [] })
+  e.target.reset()
+  return {
+    type: ADD_LIST,
     payload: tempObj
   }
 }
