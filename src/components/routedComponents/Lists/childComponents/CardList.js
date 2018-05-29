@@ -9,7 +9,7 @@ import { DropTarget } from "react-dnd"
 class ListMenu extends Component {
   constructor(props) {
     super(props)
-    this.state = { cards: props.viewingBoard.lists[this.props.id].cards }
+    this.state = { cards: props.viewingLists[this.props.id].cards }
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -61,7 +61,7 @@ class ListMenu extends Component {
     this.props.sendUpdate(
       this.props.id,
       this.state.cards,
-      this.props.viewingBoard
+      this.props.viewingLists
     )
   }
 

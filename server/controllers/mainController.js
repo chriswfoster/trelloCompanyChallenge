@@ -1,42 +1,4 @@
-let userList = []
-
 let teams = []
-
-let boards = [
-  {
-    id: 1,
-    name: "first",
-    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
-    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"],
-    lists: [
-      { name: "primary", cards: ["hi", "test", "whatever"] },
-      { name: "lists", cards: ["hi", "test", "whatever"] },
-      { name: "here", cards: ["hi", "test", "whatever"] }
-    ]
-  },
-  {
-    id: 2,
-    name: "second",
-    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
-    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"],
-    lists: [
-      { name: "primary", cards: ["hi", "test", "whatever"] },
-      { name: "lists", cards: ["hi", "test", "whatever"] },
-      { name: "here", cards: ["hi", "test", "whatever"] }
-    ]
-  },
-  {
-    id: 3,
-    name: "third",
-    ownerId: "U186LBop0RSz9eitxecVQX0HjH42",
-    allMembers: ["U186LBop0RSz9eitxecVQX0HjH42"],
-    lists: [
-      { name: "primary", cards: ["hi", "test", "whatever"] },
-      { name: "lists", cards: ["hi", "test", "whatever"] },
-      { name: "here", cards: ["hi", "test", "whatever"] }
-    ]
-  }
-]
 
 const addToUserList = function(req, res) {
   const dbInstance = req.app.get("db")
@@ -52,21 +14,30 @@ const addToUserList = function(req, res) {
             dbInstance
               .yourFirstBoard("Your first board", response[0].id)
               .then(response => addToUserList(req, res))
-              .catch(err => console.log("yourFirstBoard err:", err))
+              .catch(err => console.log("yourFirstBoard err: ", err))
           })
-          .catch(err => console.log("createUser err:", err))
+          .catch(err => console.log("createUser err: ", err))
       } else {
         res.status(200).json(response)
       }
     })
-    .catch(err => console.log("getUserInfo err:", err))
+    .catch(err => console.log("getUserInfo err: ", err))
 }
 
 //Arrow function, for fun I guess.
-const getUserInfo = (req, res) => {}
+const getLists = function(req, res) {
+  const dbInstance = req.app.get("db")
+  const { board } = req.query
+
+  dbInstance
+    .getBoardLists(board)
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log("getLists err: ", err))
+}
 
 const getTeams = function(req, res) {
-  console.log(req.params.id)
+  // not doing anything with this yet
+  // console.log(req.params.id)
 }
 
 const getBoards = function(req, res) {
@@ -78,14 +49,14 @@ const getBoards = function(req, res) {
       dbInstance
         .getUserBoards(response[0].id)
         .then(response => res.status(200).json(response))
-        .catch(err => console.log("getUserBoards err:", err))
+        .catch(err => console.log("getUserBoards err: ", err))
     })
-    .catch(err => console.log("getUserInfo err:", err))
+    .catch(err => console.log("getUserInfo err: ", err))
 }
 
 module.exports = {
   addToUserList,
-  getUserInfo,
   getTeams,
-  getBoards
+  getBoards,
+  getLists
 }

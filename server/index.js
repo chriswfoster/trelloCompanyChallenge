@@ -17,9 +17,10 @@ const massiveConnection = massive(process.env.connectionString) // On this line 
   .then(db => app.set("db", db)) // if connection exists, set 'db' to db
   .catch(console.log) //  log an error if exists
 
-app.get("/api/getUserInfo/", ctrl.getUserInfo)
+
 app.get("/api/getUserBoards/:id", ctrl.getBoards)
 app.get("/api/getUserTeams/:id", ctrl.getTeams)
+app.get("/api/getLists", ctrl.getLists)
 app.post("/api/addToUserList", ctrl.addToUserList)
 
 app.listen(PORT, () => console.log(`We are now listening to port ${PORT}`))
