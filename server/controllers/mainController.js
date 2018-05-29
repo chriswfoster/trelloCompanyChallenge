@@ -71,9 +71,9 @@ const getTeams = function(req, res) {
 
 const getBoards = function(req, res) {
   const dbInstance = req.app.get("db")
-  const { id } = req.params.id
+  const { id } = req.params
   dbInstance
-    .getUserInfo(uid)
+    .getUserInfo(id)
     .then(response => {
       dbInstance
         .getUserBoards(response[0].id)

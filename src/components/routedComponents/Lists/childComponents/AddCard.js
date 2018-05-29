@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { addCardTextHandler, addCardSubmit } from "../../../../ducks/reducer"
-import Card from "../../../AsortedPlayground/Card"
 
 class AddCard extends Component {
   constructor() {
