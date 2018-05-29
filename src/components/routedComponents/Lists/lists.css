@@ -2,12 +2,14 @@
 
 .Lists-primary {
   background-color: var(--lightlue-bg-color);
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
 }
 
 .Lists-cardFlex {
-  height: auto;
+  width: auto;
+  overflow-x: auto;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -27,8 +29,9 @@
 /* /////////// -------   CardList component   ------- /////////// */
 
 .CardList-primary {
-  width: 270px;
-  height: auto;
+  min-width: 270px;
+  max-height: 83vh;
+  overflow-y: auto;
   margin: 0 5px;
   background-color: var(--greycard-bg-color);
   border-radius: 5px;
