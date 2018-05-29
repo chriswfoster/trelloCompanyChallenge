@@ -17,7 +17,6 @@ class Lists extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="Lists-primary">
         <Header />

@@ -34,7 +34,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_projectid)
     return (
       <div className="Login-main">
         <p>Log in to Rtello</p>

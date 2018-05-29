@@ -83,7 +83,6 @@ export default function reducer(state = initialState, action) {
 
 /////////// -------   Login functionality  ------- ///////////
 export function sendUserInfo(user) {
-  console.log(user)
   return {
     type: REQ_USER,
     payload: user
@@ -102,7 +101,6 @@ export function getUserBoards(userid) {
 }
 
 export function boardView(board) {
-  console.log(board)
   return {
     type: VIEWING_BOARD,
     payload: board

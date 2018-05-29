@@ -2,7 +2,7 @@ let teams = []
 
 const addToUserList = function(req, res) {
   const dbInstance = req.app.get("db")
-  console.log("hi")
+  console.log("User with this email visited: ", email)
   const { uid, displayName, email, photoUrl } = req.body.user
   dbInstance
     .getUserInfo(uid)

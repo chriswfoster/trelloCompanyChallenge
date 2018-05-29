@@ -23,7 +23,6 @@ class Card extends Component {
 
 const cardSource = {
   beginDrag(props) {
-    console.log("beginDrag")
     return {
       index: props.index,
       listId: props.listId,
@@ -33,7 +32,6 @@ const cardSource = {
   },
 
   endDrag(props, monitor) {
-    console.log("endDrag", props.listId)
     const item = monitor.getItem()
     const dropResult = monitor.getDropResult()
 

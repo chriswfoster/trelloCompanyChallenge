@@ -10,7 +10,6 @@ class Boards extends Component {
   }
 
   render() {
-    console.log(this.props)
     const boards = this.props.userBoardList.map((board, i) => (
       <Link to="/lists" className="Main-boardbuttons Main-bluebuttons" onClick={()=> this.props.boardView(this.props.userBoardList[i])} key={i}>
         <p>{board.name}</p>

@@ -12,15 +12,6 @@ class ListMenu extends Component {
     this.state = { cards: props.viewingLists[this.props.id].cards }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   console.log(nextProps.list)
-  //   this.setState({ cards: nextProps.viewingBoard.lists[this.props.id].cards })
-  // }
-  // shouldComponentUpdate(nextProps) {
-  //   console.log(nextProps)
-  //     return nextProps.viewingBoard.lists[this.props.id].cards !== this.state.cards ? true : true
-  //   }
-
   pushCard(card) {
     this.setState(
       update(this.state, {
@@ -54,7 +45,6 @@ class ListMenu extends Component {
         }
       })
     )
-    console.log("move", this.props.id)
   }
 
   updateReducer() {
