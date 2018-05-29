@@ -56,6 +56,9 @@ const getTeams = function(req, res) {
 }
 
 const getBoards = function(req, res) {
+  const dbInstance = app.get('db')
+
+  dbInstance.
   console.log(req.params.id)
   let boardList = boards.filter(board => board.ownerId === req.params.id)
   res.status(200).json(boardList)
