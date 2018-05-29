@@ -32,12 +32,10 @@ export default function reducer(state = initialState, action) {
       })
 
     case PUSH_UPDATE:
-      return (
-        Object.assign({}, state, {
-          viewingLists: action.payload,
-          addCardTest: ""
-        })
-      )
+      return Object.assign({}, state, {
+        viewingLists: action.payload,
+        addCardText: ""
+      })
 
     case VIEWING_BOARD:
       return Object.assign({}, state, { viewingBoard: action.payload })
@@ -47,7 +45,8 @@ export default function reducer(state = initialState, action) {
 
     case ADD_LIST:
       return Object.assign({}, state, {
-        viewingBoard: action.payload
+        viewingBoard: action.payload,
+        addListText: ""
       })
 
     case ADD_LIST_TEXT_HANDLER:
