@@ -17,9 +17,16 @@ const massiveConnection = massive(process.env.connectionString) // On this line 
   .then(db => app.set("db", db)) // if connection exists, set 'db' to db
   .catch(console.log) //  log an error if exists
 
+app.use(express.static(`${__dirname}/../build`))
+
 app.get("/api/getUserBoards/:id", ctrl.getBoards)
 app.get("/api/getUserTeams/:id", ctrl.getTeams)
 app.get("/api/getLists", ctrl.getLists)
 app.post("/api/addToUserList", ctrl.addToUserList)
+
+const path = require("path")
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "/../build/index.html"))
+})
 
 app.listen(PORT, () => console.log(`We are now listening to port ${PORT}`))
