@@ -14,16 +14,12 @@ class ListMenu extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.list)
-    // this.setState({ cards: next.list })
+    this.setState({ cards: nextProps.viewingBoard.lists[this.props.id].cards })
   }
-
-  // shouldComponentUpdate(nextProps) {
-  //   console.log(nextProps)
-
-  //   //Please ignore this ternary lol.
-  //   //For some reason on first card drag, it won't update correctly.
-  //   return nextProps.list !== this.state.cards ? true : true
-  // }
+  shouldComponentUpdate(nextProps) {
+    console.log(nextProps)
+      return nextProps.viewingBoard.lists[this.props.id].cards !== this.state.cards ? true : true
+    }
 
   pushCard(card) {
     this.setState(
@@ -82,7 +78,7 @@ class ListMenu extends Component {
         {this.state.cards.map((card, i) => {
           return (
             <Card
-              key={card.i}
+              key={i}
               index={i}
               listId={this.props.id}
               card={card}

@@ -12,10 +12,7 @@ import AddList from "./childComponents/AddList"
 import "./lists.css"
 
 class Lists extends Component {
-shouldComponentUpdate(nextProps) {
 
-    return nextProps !== this.props ? true : false
-  }
   render() {
     console.log(this.props)
     return (

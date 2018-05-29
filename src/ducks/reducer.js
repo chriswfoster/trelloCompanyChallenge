@@ -71,6 +71,7 @@ export default function reducer(state = initialState, action) {
       })
 
     case PUSH_UPDATE:
+    console.log(initialState.viewingBoard)
       return Object.assign({}, state, {
         viewingBoard: action.payload
       })
