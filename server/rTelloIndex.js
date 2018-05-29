@@ -3,7 +3,7 @@ const express = require("express")
 const massive = require("massive")
 const cors = require("cors")
 const ctrl = require("./controllers/mainController")
-require('dotenv').config()
+require("dotenv").config()
 
 const PORT = 3344
 
@@ -16,7 +16,6 @@ app.use(cors())
 const massiveConnection = massive(process.env.connectionString) // On this line I tell massive to make the connection
   .then(db => app.set("db", db)) // if connection exists, set 'db' to db
   .catch(console.log) //  log an error if exists
-
 
 app.get("/api/getUserBoards/:id", ctrl.getBoards)
 app.get("/api/getUserTeams/:id", ctrl.getTeams)
