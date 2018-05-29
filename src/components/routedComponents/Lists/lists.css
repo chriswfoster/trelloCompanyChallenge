@@ -30,6 +30,7 @@
 
 .CardList-primary {
   min-width: 270px;
+  max-width: 270px;
   max-height: 83vh;
   overflow-y: auto;
   margin: 0 5px;
@@ -78,4 +79,10 @@
   height: 100%;
   margin: 0px;
   padding-left: 2vw;
+}
+
+.AddCard-buttonP {
+  transform: rotate(45deg);
+  margin: 0px;
+  padding: 0px;
 }

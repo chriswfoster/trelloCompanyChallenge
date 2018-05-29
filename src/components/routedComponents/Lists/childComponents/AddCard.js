@@ -21,7 +21,17 @@ class AddCard extends Component {
           </button>
         ) : (
           <div>
-            <form onSubmit={e => this.props.addCardSubmit(e, this.props.listId, this.props.viewingLists, this.props.addCardText)} onBlur={() => this.setState({ add: false })}>
+            <form
+              onSubmit={e =>
+                this.props.addCardSubmit(
+                  e,
+                  this.props.listId,
+                  this.props.viewingLists,
+                  this.props.addCardText
+                )
+              }
+              onBlur={() => this.setState({ add: false })}
+            >
               <input
                 id="test"
                 onChange={e => this.props.addCardTextHandler(e)}
@@ -29,8 +39,9 @@ class AddCard extends Component {
                 autoFocus
               />
               <input type="submit" value="Add" />
-              <button onClick={() => this.setState({ add: false })}>+</button>
-          
+              <button onClick={() => this.setState({ add: false })}>
+                <p className="AddCard-buttonP">+</p>
+              </button>
             </form>
           </div>
         )}
