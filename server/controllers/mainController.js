@@ -39,13 +39,23 @@ let boards = [
 ]
 
 const addToUserList = function(req, res) {
-  let listCheck = userList.filter(user => {
-    user.uid === req.body.user.uid
-  })
-  listCheck.length > 0 ? null : userList.push(req.body.user)
+const dbInstance = req.app.get('db')
+console.log(req.body.user)
+  const {uid, displayName, email, photoUrl} = req.body.user
+  dbInstance.getUserBoards(uid)
+  .then(response => { if (response.length > 1){
+    dbInstance.createUser(uid, displayName, email, photoUrl)
+    .then(response => console.log(response))
+  }
+})
+  // res.status(200).json(boardList)
+  // let listCheck = userList.filter(user => {
+  //   user.uid === req.body.user.uid
+  // })
+  // listCheck.length > 0 ? null : userList.push(req.body.user)
 
-  console.log(userList)
-  res.status(200).json(req.body.user)
+  // console.log(userList)
+  // res.status(200).json(req.body.user)
 }
 
 //Arrow function, for fun I guess.
@@ -56,12 +66,7 @@ const getTeams = function(req, res) {
 }
 
 const getBoards = function(req, res) {
-  const dbInstance = app.get('db')
 
-  dbInstance.
-  console.log(req.params.id)
-  let boardList = boards.filter(board => board.ownerId === req.params.id)
-  res.status(200).json(boardList)
 }
 
 module.exports = {
