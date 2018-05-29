@@ -32,10 +32,12 @@ export default function reducer(state = initialState, action) {
       })
 
     case PUSH_UPDATE:
-      console.log(initialState.viewingBoard)
-      return Object.assign({}, state, {
-        viewingBoard: action.payload
-      })
+      return (
+        Object.assign({}, state, {
+          viewingLists: action.payload,
+          addCardTest: ""
+        })
+      )
 
     case VIEWING_BOARD:
       return Object.assign({}, state, { viewingBoard: action.payload })
@@ -85,7 +87,7 @@ export function sendUserInfo(user) {
   console.log(user)
   return {
     type: REQ_USER,
-    payload: user[0]
+    payload: user
   }
 }
 
@@ -122,8 +124,8 @@ export function getLists(board) {
 /////////// -------   Card functionality  ------- ///////////
 
 export function sendUpdate(listId, cards, reducerObj) {
-    const tempObj = reducerObj
-    tempObj[listId].cards = cards
+  const tempObj = reducerObj
+  tempObj[listId].cards = cards
   return {
     type: PUSH_UPDATE,
     payload: tempObj
@@ -141,7 +143,7 @@ export function addCardTextHandler(e) {
 export function addCardSubmit(e, listId, reducerObj, text) {
   e.preventDefault()
   const tempObj = reducerObj
-  tempObj.lists[listId].cards.push(text)
+  tempObj[listId].cards.push(text)
   e.target.reset()
   return {
     type: PUSH_UPDATE,
@@ -159,7 +161,7 @@ export function addListTextHandler(e) {
 export function addListSubmit(e, reducerObj, text) {
   e.preventDefault()
   const tempObj = reducerObj
-  tempObj.lists.push({ name: text, cards: [] })
+  tempObj.push({ name: text, cards: [] })
   e.target.reset()
   return {
     type: ADD_LIST,

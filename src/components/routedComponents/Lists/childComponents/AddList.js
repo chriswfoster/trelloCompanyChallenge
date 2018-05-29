@@ -22,7 +22,7 @@ class AddList extends Component {
               onSubmit={e =>
                 this.props.addListSubmit(
                   e,
-                  this.props.viewingBoard,
+                  this.props.viewingLists,
                   this.props.addListText
                 )
               }
