@@ -65,7 +65,7 @@ class ListMenu extends Component {
     return connectDropTarget(
       <div className="CardList-primary">
         <p className="CardList-name">{this.props.name}</p>
-        {this.state.cards.map((card, i) => {
+        {cards.map((card, i) => {
           return (
             <Card
               key={i}
