@@ -28,7 +28,6 @@ const cardSource = {
       listId: props.listId,
       card: props.card
 	}
-	props.updateReducer()
   },
 
   endDrag(props, monitor) {

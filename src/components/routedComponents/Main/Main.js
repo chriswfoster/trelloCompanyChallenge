@@ -1,11 +1,11 @@
 import React, { Component } from "react"
-import axios from "axios"
+
 import { connect } from "react-redux"
+import { Route, Switch } from "react-router-dom"
 
 import Header from "../../Header/Header"
 import Boards from "./childComponents/Boards/Boards"
 import Teams from "./childComponents/Teams/Teams"
-import { Route, Switch } from "react-router-dom"
 import LeftPanel from "./childComponents/LeftPanel"
 
 import "./main.css"
