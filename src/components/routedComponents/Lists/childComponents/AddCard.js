@@ -11,7 +11,6 @@ class AddCard extends Component {
   }
 
   render() {
-    const inputTarget = document.getElementById("test")
 
     return (
       <div>
