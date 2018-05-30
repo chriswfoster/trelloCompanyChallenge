@@ -39,7 +39,7 @@ class Login extends Component {
         <p>Log in to Rtello</p>
         {/* I used an arrow function below to bypass binding, heheh. Not sure if that's bad practice or not. */}
         <button onClick={() => this.login()}>
-          <img src={require("./sign-in-with-google.svg")} />Log in with Google
+          <img src={require("./sign-in-with-google.svg")} alt="Google icon"/>Log in with Google
         </button>
         <button onClick={() => this.props.sendUserInfo(loginInfo)}>
           Login with default user
