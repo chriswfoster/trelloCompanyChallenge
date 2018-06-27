@@ -12,13 +12,13 @@ import { getLists } from "../../../ducks/reducer"
 import "./lists.css"
 
 class Lists extends Component {
-  
+
   componentDidMount() {
     this.props.getLists(this.props.viewingBoard.id)
   }
 
   render() {
-    console.log(this.props.viewingBoard)
+    console.log(this.props)
     return (
       <div className="Lists-primary">
         <Header />

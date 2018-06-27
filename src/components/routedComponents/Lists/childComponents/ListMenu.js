@@ -40,6 +40,7 @@ class ListMenu extends Component {
         <Button
           className="ListMenu-primary"
           onClick={() => this.setState({ showModal: true })}
+          type="primary"
         >
           {this.props.viewingBoard.name}
         </Button>
