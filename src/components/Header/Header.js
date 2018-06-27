@@ -3,6 +3,7 @@ import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
 import { boardView, getUserBoards } from "../../ducks/reducer"
 import { Link } from "react-router-dom"
+import CreateNewBoard from '../routedComponents/Main/childComponents/Boards/CreateNewBoard'
 
 import "./header.css"
 class Header extends Component {
@@ -23,9 +24,7 @@ class Header extends Component {
 
   render() {
     const menu = (
-      <Menu
-      // visible={this.state.showModal
-      >
+      <Menu>
         <Menu.Item>
           <Input />
         </Menu.Item>
@@ -37,6 +36,9 @@ class Header extends Component {
             <Link to="/lists">{item.name}</Link>
           </Menu.Item>
         ))}
+            <Menu.Item>
+            <CreateNewBoard />
+            </Menu.Item>
       </Menu>
     )
     return (

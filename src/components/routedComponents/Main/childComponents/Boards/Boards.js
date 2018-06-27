@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { getUserBoards, boardView } from "../../../../../ducks/reducer"
+import CreateNewBoard from "./CreateNewBoard"
 
 class Boards extends Component {
   componentDidMount() {
@@ -11,7 +12,12 @@ class Boards extends Component {
 
   render() {
     const boards = this.props.userBoardList.map((board, i) => (
-      <Link to="/lists" className="Main-boardbuttons Main-bluebuttons" onClick={()=> this.props.boardView(this.props.userBoardList[i])} key={i}>
+      <Link
+        to="/lists"
+        className="Main-boardbuttons Main-bluebuttons"
+        onClick={() => this.props.boardView(this.props.userBoardList[i])}
+        key={i}
+      >
         <p>{board.name}</p>
       </Link>
     ))
@@ -21,7 +27,9 @@ class Boards extends Component {
         <div className="boardsFlex">
           {boards}
           <div className="Main-boardbuttons Main-createboardbutton">
-            <p>Create new board...</p>
+            <div>
+              <CreateNewBoard />
+            </div>
           </div>
         </div>
       </div>
@@ -29,7 +37,10 @@ class Boards extends Component {
   }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {
-  getUserBoards,
-  boardView
-})(Boards)
+export default connect(
+  mapStateToProps,
+  {
+    getUserBoards,
+    boardView
+  }
+)(Boards)
