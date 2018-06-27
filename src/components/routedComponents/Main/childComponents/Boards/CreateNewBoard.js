@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Modal, Input } from "antd"
 import axios from 'axios'
+import { connect } from "react-redux"
 
 class CreateNewBoard extends Component{
 constructor(){
@@ -13,8 +14,11 @@ constructor(){
 
 handleOkay = (e) => {
     e.preventDefault()
+    const {boardName} = this.state
+    const {uid} = this.props.user
     axios.post('/api/createBoard', {
-        
+        boardName,
+        uid
     })
     this.setState({showModal: false})
 }
@@ -32,9 +36,10 @@ return(
           onOk={this.handleOkay}
           onCancel={this.handleCancel}
         >
-          <p>Type Board Name</p>
+          <p>Type Board Name Below:</p>
           <form onSubmit={e => this.handleOkay(e)}>
             <Input
+            placeholder="Board Name Here..."
               value={this.state.boardName}
               onChange={e => this.setState({ boardName: e.target.value })}
             />
@@ -44,4 +49,7 @@ return(
 )
 }
 }
-export default CreateNewBoard
+
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {})(CreateNewBoard)

@@ -24,6 +24,7 @@ app.get("/api/getUserTeams/:id", ctrl.getTeams)
 app.get("/api/getLists", ctrl.getLists)
 app.put("/api/updateBoardName", ctrl.updateBoardName)
 app.post("/api/addToUserList", ctrl.addToUserList)
+app.post('/api/createBoard', ctrl.createBoard)
 
 const path = require("path")
 app.get("*", (req, res, next) => {

@@ -2,8 +2,8 @@ let teams = []
 
 const addToUserList = function(req, res) {
   const dbInstance = req.app.get("db")
-  console.log("User with this email visited: ", email)
   const { uid, displayName, email, photoUrl } = req.body.user
+  console.log("User with this email visited: ", email)
   dbInstance
     .getUserInfo(uid)
     .then(response => {
@@ -14,14 +14,14 @@ const addToUserList = function(req, res) {
             dbInstance
               .yourFirstBoard("Your first board", response[0].id)
               .then(response => addToUserList(req, res))
-              .catch(err => console.log("yourFirstBoard err: ", err))
+              .catch(err => console.log("addToUserList/yourFirstBoard err: ", err))
           })
-          .catch(err => console.log("createUser err: ", err))
+          .catch(err => console.log("addToUserList/createUser err: ", err))
       } else {
         res.status(200).json(response)
       }
     })
-    .catch(err => console.log("getUserInfo err: ", err))
+    .catch(err => console.log("addToUserList/getUserInfo err: ", err))
 }
 
 //Arrow function, for fun I guess.
@@ -49,21 +49,35 @@ const getBoards = function(req, res) {
       dbInstance
         .getUserBoards(response[0].id)
         .then(response => res.status(200).json(response))
-        .catch(err => console.log("getUserBoards err: ", err))
+        .catch(err => console.log("getBoards/getUserBoards err: ", err))
     })
-    .catch(err => console.log("getUserInfo err: ", err))
+    .catch(err => console.log("getBoards/getUserInfo err: ", err))
 }
 
 const updateBoardName = function(req, res) {
   const dbInstance = req.app.get("db")
   const { boardId, boardName } = req.body
-  console.log(req.body)
   dbInstance.updateBoardName(boardId, boardName).then(response => {
     dbInstance
       .getUserBoards(response[0].uid)
       .then(response => res.status(200).json(response))
-      .catch(err => console.log("getUserBoards err: ", err))
+      .catch(err => console.log("updateBoardName/getUserBoards err: ", err))
   })
+}
+
+const createBoard = function (req,res) {
+  const dbInstance = req.app.get('db')
+  const {boardName, uid} = req.body
+  dbInstance
+  .getUserInfo(uid)
+  .then(response => {
+    dbInstance.createBoard(boardName, response[0].id)
+      .then(response => res.status(200).json(response))
+      .catch(err => console.log("createBoard/getUserInfo err: ", err))
+  })
+  .catch(err => console.log("createBoard/getUserInfo err: ", err))
+
+
 }
 
 module.exports = {
@@ -71,5 +85,6 @@ module.exports = {
   getTeams,
   getBoards,
   getLists,
-  updateBoardName
+  updateBoardName,
+  createBoard
 }
