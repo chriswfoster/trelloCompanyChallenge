@@ -106,7 +106,7 @@ export function boardView(board) {
   }
 }
 
-export function updateBoard (board){
+export function boardListUpdater (board){
   return {
     type: VIEWING_BOARD,
     payload: board

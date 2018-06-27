@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Modal, Input } from "antd"
 import axios from 'axios'
 import { connect } from "react-redux"
+import { boardListUpdater } from '../../../../../ducks/reducer'
 
 class CreateNewBoard extends Component{
 constructor(){
@@ -19,6 +20,11 @@ handleOkay = (e) => {
     axios.post('/api/createBoard', {
         boardName,
         uid
+    })
+    .then(response =>{
+        let newBoardList = this.props.userBoardList.push(response.data[0])
+        this.props.boardListUpdater(newBoardList)
+
     })
     this.setState({showModal: false})
 }
@@ -52,4 +58,4 @@ return(
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {})(CreateNewBoard)
+export default connect(mapStateToProps, {boardListUpdater})(CreateNewBoard)
