@@ -22,6 +22,7 @@ app.use(express.static(`${__dirname}/../build`))
 app.get("/api/getUserBoards/:id", ctrl.getBoards)
 app.get("/api/getUserTeams/:id", ctrl.getTeams)
 app.get("/api/getLists", ctrl.getLists)
+app.put("/api/updateBoardName", ctrl.updateBoardName)
 app.post("/api/addToUserList", ctrl.addToUserList)
 
 const path = require("path")

@@ -106,6 +106,13 @@ export function boardView(board) {
   }
 }
 
+export function updateBoard (board){
+  return {
+    type: VIEWING_BOARD,
+    payload: board
+  }
+}
+
 /////////// -------   List functionality  ------- ///////////
 
 export function getLists(board) {

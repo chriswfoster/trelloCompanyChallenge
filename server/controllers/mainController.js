@@ -54,9 +54,22 @@ const getBoards = function(req, res) {
     .catch(err => console.log("getUserInfo err: ", err))
 }
 
+const updateBoardName = function(req, res) {
+  const dbInstance = req.app.get("db")
+  const { boardId, boardName } = req.body
+  console.log(req.body)
+  dbInstance.updateBoardName(boardId, boardName).then(response => {
+    dbInstance
+      .getUserBoards(response[0].uid)
+      .then(response => res.status(200).json(response))
+      .catch(err => console.log("getUserBoards err: ", err))
+  })
+}
+
 module.exports = {
   addToUserList,
   getTeams,
   getBoards,
-  getLists
+  getLists,
+  updateBoardName
 }

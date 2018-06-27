@@ -1,6 +1,9 @@
 import React, { Component } from "react"
+import axios from "axios"
 import { Modal, Button, Input } from "antd"
-import "antd/dist/antd.css"
+
+import { connect } from "react-redux"
+import { boardView } from "../../../../ducks/reducer"
 
 class ListMenu extends Component {
   constructor() {
@@ -16,8 +19,19 @@ class ListMenu extends Component {
   }
 
   handleOkay = e => {
-    console.log(e)
-    this.setState({ showMOdal: false })
+    e.preventDefault()
+    const { boardId } = this.props
+    axios
+      .put("/api/updateBoardName", {
+        boardId,
+        boardName: this.state.renameText
+      })
+      .then(response =>
+        this.props.boardView(
+          response.data.filter(item => item.id === boardId)[0]
+        )
+      )
+    this.setState({ showModal: false, renameText: "" })
   }
 
   render() {
@@ -27,7 +41,7 @@ class ListMenu extends Component {
           className="ListMenu-primary"
           onClick={() => this.setState({ showModal: true })}
         >
-          {this.props.boardName}
+          {this.props.viewingBoard.name}
         </Button>
 
         <Modal
@@ -37,10 +51,19 @@ class ListMenu extends Component {
           onCancel={this.handleCancel}
         >
           <p>Rename this board?</p>
-          <Input onChange={e => this.setState({renameText: e.target.value})} />
+          <form onSubmit={e => this.handleOkay(e)}>
+            <Input
+              value={this.state.renameText}
+              onChange={e => this.setState({ renameText: e.target.value })}
+            />
+          </form>
         </Modal>
       </div>
     )
   }
 }
-export default ListMenu
+const mapStateToProps = state => state
+export default connect(
+  mapStateToProps,
+  { boardView }
+)(ListMenu)
