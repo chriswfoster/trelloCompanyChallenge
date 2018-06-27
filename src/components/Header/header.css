@@ -2,6 +2,12 @@
   width: 100vw;
   height: 4vh;
   background-color: var(--blue-bg-color);
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
 }
 .Header-primary p {
   margin: 0;
