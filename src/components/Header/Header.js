@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
+import { boardView } from "../../ducks/reducer"
+import { Link } from "react-router-dom"
 
 import "./header.css"
 class Header extends Component {
@@ -16,12 +18,25 @@ class Header extends Component {
   }
 
   render() {
-    const menu = (  <Menu
+    const menu = (
+      <Menu
       // visible={this.state.showModal
-    >
-      <Menu.Item>1st menu item</Menu.Item>
-      <Menu.Item><Input /></Menu.Item>
-    </Menu>)
+      >
+        <Menu.Item>
+          <Input />
+        </Menu.Item>
+        {this.props.userBoardList.map((item, i) => (
+          <Menu.Item key={i}>
+            <Link
+              to="/lists"
+              onClick={() => this.props.boardView(this.props.userBoardList[i])}
+            >
+              {item.name}
+            </Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+    )
     return (
       <div className="Header-primary">
         <Button
@@ -29,12 +44,12 @@ class Header extends Component {
           type="primary"
         >
           <Dropdown overlay={menu}>
-    <p className="ant-dropdown-link" >
-      Boards <Icon type="down" />
-    </p>
-  </Dropdown>
+            <p className="ant-dropdown-link">
+              Boards <Icon type="down" />
+            </p>
+          </Dropdown>
         </Button>
-     
+
         <p>Rtello</p>
         <p>Console stuff</p>
       </div>
@@ -42,4 +57,7 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {})(Header)
+export default connect(
+  mapStateToProps,
+  {}
+)(Header)
