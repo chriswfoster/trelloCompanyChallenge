@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
-import { boardView } from "../../ducks/reducer"
+import { boardView, getUserBoards } from "../../ducks/reducer"
 import { Link } from "react-router-dom"
 
 import "./header.css"
@@ -11,6 +11,10 @@ class Header extends Component {
     this.state = {
       showModal: false
     }
+  }
+
+  componentDidMount(){
+    this.props.getUserBoards(this.props.user.uid)
   }
 
   showModal() {
@@ -26,13 +30,11 @@ class Header extends Component {
           <Input />
         </Menu.Item>
         {this.props.userBoardList.map((item, i) => (
-          <Menu.Item key={i}>
-            <Link
-              to="/lists"
-              onClick={() => this.props.boardView(this.props.userBoardList[i])}
-            >
-              {item.name}
-            </Link>
+          <Menu.Item
+            onClick={() => this.props.boardView(this.props.userBoardList[i])}
+            key={i}
+          >
+            <Link to="/lists">{item.name}</Link>
           </Menu.Item>
         ))}
       </Menu>
@@ -59,5 +61,5 @@ class Header extends Component {
 const mapStateToProps = state => state
 export default connect(
   mapStateToProps,
-  {}
+  {boardView, getUserBoards}
 )(Header)
