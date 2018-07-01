@@ -1,3 +1,6 @@
+<img width='500px' align='center' src='./readmefiles/construction.png'>
+<h1 align='center'>Still under construction...</h1>
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
