@@ -1,4 +1,4 @@
-<img width='500px' align='center' src='./readmefiles/construction.png'>
+<img width='500px' align='center' src='https://raw.githubusercontent.com/chriswfoster/2ndPortfolio/master/readmefiles/construction.png'>
 <h1 align='center'>Still under construction...</h1>
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
