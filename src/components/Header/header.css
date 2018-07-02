@@ -3,12 +3,12 @@
 
   background-color: var(--blue-bg-color);
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
   align-content: center;
-padding: 1vh;
+  padding: 1vh;
 }
 .Header-primary p {
   margin: 0;
@@ -23,4 +23,11 @@ padding: 1vh;
   color: white;
   padding: 1vh;
   cursor: pointer;
+}
+
+.Header-rTello {
+  height: 4vh;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px;
 }

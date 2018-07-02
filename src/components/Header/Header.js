@@ -3,8 +3,9 @@ import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
 import { boardView, getUserBoards, getLists } from "../../ducks/reducer"
 import { Link } from "react-router-dom"
-import CreateNewBoard from '../routedComponents/Main/childComponents/Boards/CreateNewBoard'
-import UserIcon from './childComponents/UserIcon'
+import RTelloIcon from "./childComponents/RTelloIcon.js"
+import CreateNewBoard from "../routedComponents/Main/childComponents/Boards/CreateNewBoard"
+import UserIcon from "./childComponents/UserIcon"
 
 import "./header.css"
 class Header extends Component {
@@ -15,7 +16,7 @@ class Header extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getUserBoards(this.props.user.uid)
   }
 
@@ -31,15 +32,18 @@ class Header extends Component {
         </Menu.Item>
         {this.props.userBoardList.map((item, i) => (
           <Menu.Item
-            onClick={() => this.props.boardView(this.props.userBoardList[i]) && this.props.getLists(this.props.userBoardList[i].id)}
+            onClick={() =>
+              this.props.boardView(this.props.userBoardList[i]) &&
+              this.props.getLists(this.props.userBoardList[i].id)
+            }
             key={i}
           >
             <Link to="/lists">{item.name}</Link>
           </Menu.Item>
         ))}
-            <Menu.Item>
-            <CreateNewBoard />
-            </Menu.Item>
+        <Menu.Item>
+          <CreateNewBoard />
+        </Menu.Item>
       </Menu>
     )
     return (
@@ -55,7 +59,7 @@ class Header extends Component {
           </Dropdown>
         </Button>
 
-        <p>Rtello</p>
+        <RTelloIcon />
         <UserIcon />
       </div>
     )
@@ -64,5 +68,5 @@ class Header extends Component {
 const mapStateToProps = state => state
 export default connect(
   mapStateToProps,
-  {boardView, getUserBoards, getLists}
+  { boardView, getUserBoards, getLists }
 )(Header)

@@ -11,8 +11,6 @@ const app = express()
 app.use(json())
 app.use(cors())
 
-// I decided to add massive to my project
-// I was having difficulty getting the nested data in Redux to rerender properly.
 const massiveConnection = massive(process.env.connectionString) // On this line I tell massive to make the connection
   .then(db => app.set("db", db)) // if connection exists, set 'db' to db
   .catch(console.log) //  log an error if exists
@@ -24,10 +22,10 @@ app.get("/api/getUserTeams/:id", ctrl.getTeams)
 app.get("/api/getLists", ctrl.getLists)
 app.put("/api/updateBoardName", ctrl.updateBoardName)
 app.post("/api/addToUserList", ctrl.addToUserList)
-app.post('/api/addCard', ctrl.addCard)
-app.post('/api/addList', ctrl.addList)
-app.post('/api/createBoard', ctrl.createBoard)
-app.put('/api/updateArray', ctrl.updateArray)
+app.post("/api/addCard", ctrl.addCard)
+app.post("/api/addList", ctrl.addList)
+app.post("/api/createBoard", ctrl.createBoard)
+app.put("/api/updateArray", ctrl.updateArray)
 
 const path = require("path")
 app.get("*", (req, res, next) => {
