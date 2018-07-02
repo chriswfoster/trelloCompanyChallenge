@@ -97,7 +97,6 @@ const addCard = function(req, res) {
   const { cards, cardsId } = req.body
   console.log(req.body)
 
-
   dbInstance
     .addCard(`{${cards}}`, cardsId)
     .then(response => res.status(200).json(response))
@@ -109,10 +108,15 @@ const addList = function(req, res) {
   const { boardId, listName } = req.body
   console.log(req.body)
 
-    /// I need to make this create a blank {} postgres array similar to addCard.
+  /// I need to make this create a blank {} postgres array similar to addCard.
   dbInstance
     .addList(listName, boardId)
-    .then(response => res.status(200).json(response))
+    .then(response => {
+      dbInstance
+        .insertCard(response[0].id)
+        .then(responseTwo => res.status(200).json({list: response, cards: responseTwo}))
+    })
+
     .catch(err => console.log("addList err: ", err))
 }
 
