@@ -81,7 +81,9 @@ const createBoard = function (req,res) {
 const updateArray = function (req, res) {
   const dbInstance = req.app.get('db')
   console.log(req.body)
-  
+  const {cardsArr, cardsId}
+  dbInstance.updateCardArrays(cardsArr, cardsId)
+  .then(response => res.status(200))
 }
 
 module.exports = {

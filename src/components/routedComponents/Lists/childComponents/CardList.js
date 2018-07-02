@@ -56,7 +56,7 @@ class ListMenu extends Component {
   
     axios.put("/api/updateArray", {
       cardsArr: this.state.cards,
-      listId: this.props.cardsId
+      cardsId: this.props.cardsId
     }).then(response => console.log(response))
 
     this.props.sendUpdate(
