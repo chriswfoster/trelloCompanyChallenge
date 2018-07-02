@@ -106,7 +106,7 @@ export function boardView(board) {
   }
 }
 
-export function boardListUpdater (board){
+export function boardListUpdater(board) {
   return {
     type: VIEWING_BOARD,
     payload: board
@@ -127,6 +127,7 @@ export function getLists(board) {
 /////////// -------   Card functionality  ------- ///////////
 
 export function sendUpdate(listId, cards, reducerObj) {
+  console.log("move happened in reducer")
   const tempObj = reducerObj
   tempObj[listId].cards = cards
   return {
