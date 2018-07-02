@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { addListTextHandler, addListSubmit } from "../../../../ducks/reducer"
+import {  Input } from "antd"
 
 class AddList extends Component {
   constructor() {
@@ -28,9 +29,10 @@ class AddList extends Component {
                 )
               }
             >
-              <input
+              <Input
                 type="text"
                 onChange={e => this.props.addListTextHandler(e)}
+                placeholder="Enter list title..."
               />
             </form>
           </div>

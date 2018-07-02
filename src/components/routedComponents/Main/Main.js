@@ -15,17 +15,23 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <LeftPanel />
 
-        <div className="Main-rightside">
-          <Switch>
-            <Route path="/main/boards" component={Boards} />
-            <Route path="/main/teams" component={Teams} />
-          </Switch>
+        <div className="mainFlex">
+          <LeftPanel />
+
+          <div className="Main-rightside">
+            <Switch>
+              <Route path="/main/boards" component={Boards} />
+              <Route path="/main/teams" component={Teams} />
+            </Switch>
+          </div>
         </div>
       </div>
     )
   }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {})(Main)
+export default connect(
+  mapStateToProps,
+  {}
+)(Main)
