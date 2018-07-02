@@ -85,9 +85,21 @@ const updateArray = function(req, res) {
   const dbInstance = req.app.get("db")
   console.log(req.body)
   const { cardsArr, cardsId } = req.body
+
   dbInstance
-    .updateCardArrays(cardsArr, cardsId)
+    .updateCardArrays(`{${cardsArr}}`, cardsId)
     .then(response => res.status(200))
+    .catch(err => console.log("updateArray err:", err))
+}
+
+const addCard = function(req, res) {
+  const dbInstance = req.app.get("db")
+  const { cards, listId } = req.body
+  console.log(req.body)
+  dbInstance
+    .addCard(`{${cards}}`, listId)
+    .then(response => res.status(200))
+    .catch(err => console.log("addCard err: ", err))
 }
 
 module.exports = {
@@ -97,5 +109,6 @@ module.exports = {
   getLists,
   updateBoardName,
   createBoard,
-  updateArray
+  updateArray,
+  addCard
 }

@@ -149,6 +149,14 @@ export function addCardSubmit(e, listId, reducerObj, text) {
   const tempObj = reducerObj
   tempObj[listId].cards.push(text)
   e.target.reset()
+
+  // asynchronous, this should happen, shouldn't expect an error, but not to worried either way.
+  axios.post('/api/addCard',{
+    cards: tempObj[listId].cards,
+    listId
+  })
+  .then(response => console.log('added card: ', response.data))
+
   return {
     type: PUSH_UPDATE,
     payload: tempObj
