@@ -3,12 +3,17 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 
 class LeftPanel extends Component {
-
-
   render() {
- 
     return (
       <div>
+        <Link
+          to="/main"
+          className=""
+          style={{ textDecoration: "none", color: "blue" }}
+        >
+          HOME
+        </Link>
+        <br />
         <Link
           to="/main/boards"
           className=""
@@ -16,8 +21,7 @@ class LeftPanel extends Component {
         >
           BOARDS
         </Link>
-    
-      
+
         <p>TEAMS</p>
         <Link
           to="/main/teams"
@@ -32,4 +36,7 @@ class LeftPanel extends Component {
 }
 
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {})(LeftPanel)
+export default connect(
+  mapStateToProps,
+  {}
+)(LeftPanel)

@@ -12,6 +12,7 @@ import "./main.css"
 
 class Main extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         <Header />
@@ -20,10 +21,28 @@ class Main extends Component {
           <LeftPanel />
 
           <div className="Main-rightside">
-            <Switch>
-              <Route path="/main/boards" component={Boards} />
-              <Route path="/main/teams" component={Teams} />
-            </Switch>
+            {window.location.pathname === "/main" ? (
+              <div>
+                <p>
+                  Hi, and thanks for visiting. This is my full stack "Trello"
+                  clone app. It saves to a database, so you can technically use
+                  it to organize your lists and data (safely and as a long term
+                  solution, assuming you logged in).
+                </p>
+                {this.props.user.uid === "U186LBop0RSz9eitxecVQX0HjH42" ? (
+                  <p>
+                    You are currently logged in as a PUBLIC user, so you share
+                    your cards and lists with all other public users. Sign in if
+                    you wish to protect your data.
+                  </p>
+                ) : null}
+              </div>
+            ) : (
+              <Switch>
+                <Route path="/main/boards" component={Boards} />
+                <Route path="/main/teams" component={Teams} />
+              </Switch>
+            )}
           </div>
         </div>
       </div>
