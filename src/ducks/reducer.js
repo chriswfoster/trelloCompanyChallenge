@@ -47,7 +47,7 @@ export default function reducer(state = initialState, action) {
     case ADD_LIST + "_FULFILLED":
       return Object.assign({}, state, {
         isLoading: false,
-        viewingBoard: action.payload,
+        viewingList: action.payload,
         addListText: ""
       })
 
