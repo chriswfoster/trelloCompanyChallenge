@@ -14,7 +14,9 @@ const addToUserList = function(req, res) {
             dbInstance
               .yourFirstBoard("Your first board", response[0].id)
               .then(response => addToUserList(req, res))
-              .catch(err => console.log("addToUserList/yourFirstBoard err: ", err))
+              .catch(err =>
+                console.log("addToUserList/yourFirstBoard err: ", err)
+              )
           })
           .catch(err => console.log("addToUserList/createUser err: ", err))
       } else {
@@ -65,25 +67,27 @@ const updateBoardName = function(req, res) {
   })
 }
 
-const createBoard = function (req,res) {
-  const dbInstance = req.app.get('db')
-  const {boardName, uid} = req.body
+const createBoard = function(req, res) {
+  const dbInstance = req.app.get("db")
+  const { boardName, uid } = req.body
   dbInstance
-  .getUserInfo(uid)
-  .then(response => {
-    dbInstance.createBoard(boardName, response[0].id)
-      .then(response => res.status(200).json(response))
-      .catch(err => console.log("createBoard/getUserInfo err: ", err))
-  })
-  .catch(err => console.log("createBoard/getUserInfo err: ", err))
+    .getUserInfo(uid)
+    .then(response => {
+      dbInstance
+        .createBoard(boardName, response[0].id)
+        .then(response => res.status(200).json(response))
+        .catch(err => console.log("createBoard/getUserInfo err: ", err))
+    })
+    .catch(err => console.log("createBoard/getUserInfo err: ", err))
 }
 
-const updateArray = function (req, res) {
-  const dbInstance = req.app.get('db')
+const updateArray = function(req, res) {
+  const dbInstance = req.app.get("db")
   console.log(req.body)
-  const {cardsArr, cardsId}
-  dbInstance.updateCardArrays(cardsArr, cardsId)
-  .then(response => res.status(200))
+  const { cardsArr, cardsId } = req.body
+  dbInstance
+    .updateCardArrays(cardsArr, cardsId)
+    .then(response => res.status(200))
 }
 
 module.exports = {
@@ -94,5 +98,4 @@ module.exports = {
   updateBoardName,
   createBoard,
   updateArray
-
 }
