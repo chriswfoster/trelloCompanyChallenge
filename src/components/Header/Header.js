@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { boardView, getUserBoards, getLists } from "../../ducks/reducer"
 import { Link } from "react-router-dom"
 import CreateNewBoard from '../routedComponents/Main/childComponents/Boards/CreateNewBoard'
+import UserIcon from './childComponents/UserIcon'
 
 import "./header.css"
 class Header extends Component {
@@ -55,7 +56,7 @@ class Header extends Component {
         </Button>
 
         <p>Rtello</p>
-        <p>Console stuff</p>
+        <UserIcon />
       </div>
     )
   }
