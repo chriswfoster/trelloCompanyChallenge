@@ -76,8 +76,12 @@ const createBoard = function (req,res) {
       .catch(err => console.log("createBoard/getUserInfo err: ", err))
   })
   .catch(err => console.log("createBoard/getUserInfo err: ", err))
+}
 
-
+const updateArray = function (req, res) {
+  const dbInstance = req.app.get('db')
+  console.log(req.body)
+  
 }
 
 module.exports = {
@@ -86,5 +90,7 @@ module.exports = {
   getBoards,
   getLists,
   updateBoardName,
-  createBoard
+  createBoard,
+  updateArray
+
 }

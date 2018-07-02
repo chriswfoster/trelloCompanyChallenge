@@ -12,7 +12,6 @@ import { getLists } from "../../../ducks/reducer"
 import "./lists.css"
 
 class Lists extends Component {
-
   componentDidMount() {
     this.props.getLists(this.props.viewingBoard.id)
   }
@@ -22,10 +21,19 @@ class Lists extends Component {
     return (
       <div className="Lists-primary">
         <Header />
-        <ListMenu boardName={this.props.viewingBoard.name} boardId={this.props.viewingBoard.id} />
+        <ListMenu
+          boardName={this.props.viewingBoard.name}
+          boardId={this.props.viewingBoard.id}
+        />
         <div className="Lists-cardFlex">
           {this.props.viewingLists.map((list, i) => (
-            <CardList list={list.cards} name={list.name} key={list.id} id={i} />
+            <CardList
+              list={list.cards}
+              name={list.name}
+              key={list.id}
+              id={i}
+              cardsId={list.id}
+            />
           ))}
           <AddList />
         </div>
@@ -35,6 +43,7 @@ class Lists extends Component {
 }
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, { getLists })(
-  DragDropContext(HTML5Backend)(Lists)
-)
+export default connect(
+  mapStateToProps,
+  { getLists }
+)(DragDropContext(HTML5Backend)(Lists))

@@ -6,13 +6,14 @@ import { connect } from "react-redux"
 import { sendUpdate } from "../../../../ducks/reducer"
 import { DropTarget } from "react-dnd"
 
-import axios from 'axios'
+import axios from "axios"
 
 class ListMenu extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
-      cards: props.viewingLists[this.props.id].cards }
+    this.state = {
+      cards: props.viewingLists[this.props.id].cards
+    }
   }
 
   pushCard(card) {
@@ -52,12 +53,11 @@ class ListMenu extends Component {
   }
 
   updateReducer() {
-    const {cards} = this.state.cards
-    axios.put('/api/updateArray',
-  {
-    cardsArr: cards,
-    // listId: id
-  })
+  
+    axios.put("/api/updateArray", {
+      cardsArr: this.state.cards,
+      listId: this.props.cardsId
+    }).then(response => console.log(response))
 
     this.props.sendUpdate(
       this.props.id,
