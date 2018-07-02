@@ -4,7 +4,7 @@ class RTelloIcon extends Component {
   constructor() {
     super()
     this.state = {
-      flipper: true
+      flipper: false
     }
   }
   render() {
