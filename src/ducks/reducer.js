@@ -144,18 +144,19 @@ export function addCardTextHandler(e) {
   }
 }
 
-export function addCardSubmit(e, listId, reducerObj, text) {
+export function addCardSubmit(e, listId, reducerObj, text, cardsId) {
   e.preventDefault()
   const tempObj = reducerObj
   tempObj[listId].cards.push(text)
   e.target.reset()
 
   // asynchronous, this should happen, shouldn't expect an error, but not to worried either way.
-  axios.post('/api/addCard',{
-    cards: tempObj[listId].cards,
-    listId
-  })
-  .then(response => console.log('added card: ', response.data))
+  axios
+    .post("/api/addCard", {
+      cards: tempObj[listId].cards,
+      cardsId
+    })
+    .then(response => console.log("added card: ", response.data))
 
   return {
     type: PUSH_UPDATE,

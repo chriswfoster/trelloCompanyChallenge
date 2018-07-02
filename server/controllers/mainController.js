@@ -94,11 +94,11 @@ const updateArray = function(req, res) {
 
 const addCard = function(req, res) {
   const dbInstance = req.app.get("db")
-  const { cards, listId } = req.body
-  console.log(req.body)
+  const { cards, cardsId } = req.body
+
   dbInstance
-    .addCard(`{${cards}}`, listId)
-    .then(response => res.status(200))
+    .addCard(`{${cards}}`, cardsId)
+    .then(response => res.status(200).json(response))
     .catch(err => console.log("addCard err: ", err))
 }
 

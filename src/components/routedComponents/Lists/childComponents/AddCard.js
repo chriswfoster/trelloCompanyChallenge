@@ -26,7 +26,8 @@ class AddCard extends Component {
                   e,
                   this.props.listId,
                   this.props.viewingLists,
-                  this.props.addCardText
+                  this.props.addCardText,
+                  this.props.cardsId
                 )
               }
               onBlur={() => this.setState({ add: false })}

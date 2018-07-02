@@ -90,7 +90,7 @@ class ListMenu extends Component {
             />
           )
         })}
-        <AddCard listId={this.props.id} />
+        <AddCard listId={this.props.id} cardsId={this.props.cardsId} />
       </div>
     )
   }
