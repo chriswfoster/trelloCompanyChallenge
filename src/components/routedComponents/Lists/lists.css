@@ -21,6 +21,8 @@
 /* /////////// -------   ListMenu component   ------- /////////// */
 
 .ListMenu-primary {
+  margin: 1vh;
+
   height: 5vh;
   background-color: var(--lightlue-bg-color);
   color: rgb(255, 255, 255);
