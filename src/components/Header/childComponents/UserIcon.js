@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
+import {Link} from 'react-router-dom'
 
 class UserIcon extends Component {
   render() {
@@ -10,7 +11,7 @@ class UserIcon extends Component {
       <Menu>
         <Menu.Item>{displayname} ({email})</Menu.Item>
         <Menu.Item><hr /></Menu.Item>
-        <Menu.Item>About</Menu.Item>
+        <Menu.Item><Link to="/about">About</Link></Menu.Item>
       </Menu>
     )
     const matches = this.props.user.displayname ? displayname.match(/\b(\w)/g).join('') : 'N/A'
