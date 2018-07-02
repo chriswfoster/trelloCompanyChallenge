@@ -58,8 +58,10 @@ return(
           <Menu.Item key="12">RESTful Web Services</Menu.Item>
           <Menu.Item key="13">PostgreSQL</Menu.Item>
           <Menu.Item key="14">MassiveJS</Menu.Item>
-          <Menu.Item key="15">React DND (Drag and Drop)</Menu.Item>
-          <Menu.Item key="16">Ant Design</Menu.Item>
+          <Menu.Item key="15">Firebase Authentication</Menu.Item>
+          <Menu.Item key="16">React DND (Drag and Drop)</Menu.Item>
+          <Menu.Item key="17">Ant Design</Menu.Item>
+          <Menu.Item key="18">And more...</Menu.Item>
         </SubMenu>
       </Menu>
 </div>
