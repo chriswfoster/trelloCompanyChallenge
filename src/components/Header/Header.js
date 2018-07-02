@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Button, Menu, Icon, Dropdown, Input } from "antd"
 import { connect } from "react-redux"
-import { boardView, getUserBoards } from "../../ducks/reducer"
+import { boardView, getUserBoards, getLists } from "../../ducks/reducer"
 import { Link } from "react-router-dom"
 import CreateNewBoard from '../routedComponents/Main/childComponents/Boards/CreateNewBoard'
 
@@ -30,7 +30,7 @@ class Header extends Component {
         </Menu.Item>
         {this.props.userBoardList.map((item, i) => (
           <Menu.Item
-            onClick={() => this.props.boardView(this.props.userBoardList[i])}
+            onClick={() => this.props.boardView(this.props.userBoardList[i]) && this.props.getLists(this.props.userBoardList[i].id)}
             key={i}
           >
             <Link to="/lists">{item.name}</Link>
@@ -63,5 +63,5 @@ class Header extends Component {
 const mapStateToProps = state => state
 export default connect(
   mapStateToProps,
-  {boardView, getUserBoards}
+  {boardView, getUserBoards, getLists}
 )(Header)
