@@ -53,6 +53,10 @@
   align-content: stretch;
 }
 
+.Links {
+  text-decoration: none !IMPORTANT;
+}
+
 .highlighted {
   background-color: var(--blue-bg-color);
   width: 12vw;
@@ -61,7 +65,7 @@
   letter-spacing: 0.5px;
   margin-right: 5vw;
   font-weight: bold;
-  text-decoration: none !IMPORTANT;
+
 }
 .nothighlighted {
   color: black;
@@ -69,10 +73,10 @@
   letter-spacing: 0.5px;
   font-weight: bold;
   margin-right: 5vw;
-  text-decoration: none !IMPORTANT;
+
 }
 .nothighlighted:hover {
   color: black;
   background-color: lightblue;
-  text-decoration: none !IMPORTANT;
+
 }

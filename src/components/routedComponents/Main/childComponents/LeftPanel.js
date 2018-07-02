@@ -23,32 +23,31 @@ class LeftPanel extends Component {
   render() {
     return (
       <div>
-        <div
-          className={this.state.main}
-          onClick={() => this.highligher("main", "boards", "teams")}
-        >
-          <Link to="/main" className={this.state.main}>
+        <Link to="/main" className="Links">
+          <div
+            className={this.state.main}
+            onClick={() => this.highligher("main", "boards", "teams")}
+          >
             HOME
-          </Link>
-        </div>
-        <br />
-        <div
-          className={this.state.boards}
-          onClick={() => this.highligher("boards", "main", "teams")}
-        >
-          <Link to="/main/boards" className={this.state.boards}>
+          </div>
+        </Link>
+
+        <Link to="/main/boards" className="Links">
+          <div
+            className={this.state.boards}
+            onClick={() => this.highligher("boards", "main", "teams")}
+          >
             BOARDS
-          </Link>
-        </div>
-        <br />
-        <div
-          className={this.state.teams}
-          onClick={() => this.highligher("teams", "boards", "main")}
-        >
-          <Link to="/main/teams" className={this.state.teams}>
+          </div>
+        </Link>
+        <Link to="/main/teams" className="Links">
+          <div
+            className={this.state.teams}
+            onClick={() => this.highligher("teams", "boards", "main")}
+          >
             TEAMS
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     )
   }
