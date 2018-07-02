@@ -1,3 +1,3 @@
 UPDATE rtello_cards
-set cards = ARRAY$1
+set cards = json_array_elements_text($1)
 where id = $2
