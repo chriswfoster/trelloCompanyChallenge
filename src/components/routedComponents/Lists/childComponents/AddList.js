@@ -23,7 +23,8 @@ class AddList extends Component {
                 this.props.addListSubmit(
                   e,
                   this.props.viewingLists,
-                  this.props.addListText
+                  this.props.addListText,
+                  this.props.boardId
                 )
               }
             >
@@ -48,6 +49,7 @@ class AddList extends Component {
   }
 }
 const mapStateToProps = state => state
-export default connect(mapStateToProps, { addListTextHandler, addListSubmit })(
-  AddList
-)
+export default connect(
+  mapStateToProps,
+  { addListTextHandler, addListSubmit }
+)(AddList)

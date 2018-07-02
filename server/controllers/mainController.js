@@ -83,7 +83,7 @@ const createBoard = function(req, res) {
 
 const updateArray = function(req, res) {
   const dbInstance = req.app.get("db")
-  console.log(req.body)
+
   const { cardsArr, cardsId } = req.body
 
   dbInstance
@@ -95,11 +95,25 @@ const updateArray = function(req, res) {
 const addCard = function(req, res) {
   const dbInstance = req.app.get("db")
   const { cards, cardsId } = req.body
+  console.log(req.body)
+
 
   dbInstance
     .addCard(`{${cards}}`, cardsId)
     .then(response => res.status(200).json(response))
     .catch(err => console.log("addCard err: ", err))
+}
+
+const addList = function(req, res) {
+  const dbInstance = req.app.get("db")
+  const { boardId, listName } = req.body
+  console.log(req.body)
+
+    /// I need to make this create a blank {} postgres array similar to addCard.
+  dbInstance
+    .addList(listName, boardId)
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log("addList err: ", err))
 }
 
 module.exports = {
@@ -110,5 +124,6 @@ module.exports = {
   updateBoardName,
   createBoard,
   updateArray,
-  addCard
+  addCard,
+  addList
 }

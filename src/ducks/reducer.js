@@ -149,7 +149,6 @@ export function addCardSubmit(e, listId, reducerObj, text, cardsId) {
   const tempObj = reducerObj
   tempObj[listId].cards.push(text)
   e.target.reset()
-
   // asynchronous, this should happen, shouldn't expect an error, but not to worried either way.
   axios
     .post("/api/addCard", {
@@ -157,7 +156,6 @@ export function addCardSubmit(e, listId, reducerObj, text, cardsId) {
       cardsId
     })
     .then(response => console.log("added card: ", response.data))
-
   return {
     type: PUSH_UPDATE,
     payload: tempObj
@@ -171,11 +169,15 @@ export function addListTextHandler(e) {
   }
 }
 
-export function addListSubmit(e, reducerObj, text) {
+export function addListSubmit(e, reducerObj, text, boardId) {
   e.preventDefault()
   const tempObj = reducerObj
   tempObj.push({ name: text, cards: [] })
   e.target.reset()
+  axios.post("/api/addList", {
+    boardId,
+    listName: text
+  })
   return {
     type: ADD_LIST,
     payload: tempObj

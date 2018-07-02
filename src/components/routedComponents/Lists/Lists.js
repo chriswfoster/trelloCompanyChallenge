@@ -35,7 +35,7 @@ class Lists extends Component {
               cardsId={list.id}
             />
           ))}
-          <AddList />
+          <AddList  boardId={this.props.viewingBoard.id}/>
         </div>
       </div>
     )
