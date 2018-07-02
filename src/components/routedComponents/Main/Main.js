@@ -27,7 +27,7 @@ class Main extends Component {
                   Hi, and thanks for visiting. This is my full stack "Trello"
                   clone app. It saves to a database, so you can technically use
                   it to organize your lists and data (safely and as a long term
-                  solution, assuming you logged in).
+                  solution, assuming you logged in with your personal account).
                 </p>
                 {this.props.user.uid === "U186LBop0RSz9eitxecVQX0HjH42" ? (
                   <p>

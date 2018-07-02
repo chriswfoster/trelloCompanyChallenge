@@ -12,6 +12,10 @@ class Teams extends Component {
     return (
       <div>
         List of teams:
+        <p>
+          Not yet implemented, and I'm not sure if I'm going to implement it,
+          yet.
+        </p>
         {/* {teams} */}
       </div>
     )
@@ -19,6 +23,9 @@ class Teams extends Component {
 }
 
 const mapStateToProps = state => state
-export default connect(mapStateToProps, {
-  // getUserTeams
-})(Teams)
+export default connect(
+  mapStateToProps,
+  {
+    // getUserTeams
+  }
+)(Teams)
