@@ -51,12 +51,15 @@ return(
             <Menu.Item key="8">Option 8</Menu.Item>
           </SubMenu>
         </SubMenu>
-        <SubMenu key="sub4" title={<span><Icon type="setting" /><span>This Project's Tech Stack:</span></span>}>
+        <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Tech used in this project:</span></span>}>
           <Menu.Item key="9">Primarily Javascript</Menu.Item>
-          <Menu.Item key="10">React</Menu.Item>
+          <Menu.Item key="10">ReactJS</Menu.Item>
           <Menu.Item key="11">Node/Express</Menu.Item>
-          <Menu.Item key="12">PostgreSQL</Menu.Item>
-          <Menu.Item key="13">Option 12</Menu.Item>
+          <Menu.Item key="12">RESTful Web Services</Menu.Item>
+          <Menu.Item key="13">PostgreSQL</Menu.Item>
+          <Menu.Item key="14">MassiveJS</Menu.Item>
+          <Menu.Item key="15">React DND (Drag and Drop)</Menu.Item>
+          <Menu.Item key="16">Ant Design</Menu.Item>
         </SubMenu>
       </Menu>
 </div>
