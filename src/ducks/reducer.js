@@ -42,8 +42,11 @@ export default function reducer(state = initialState, action) {
     case ADD_CARD_TEXT_HANDLER:
       return Object.assign({}, state, { addCardText: action.payload })
 
-    case ADD_LIST:
+    case ADD_LIST + "_PENDING":
+      return Object.assign({}, state, { isLoading: true })
+    case ADD_LIST + "_FULFILLED":
       return Object.assign({}, state, {
+        isLoading: false,
         viewingBoard: action.payload,
         addListText: ""
       })
@@ -172,14 +175,26 @@ export function addListTextHandler(e) {
 export function addListSubmit(e, reducerObj, text, boardId) {
   e.preventDefault()
   const tempObj = reducerObj
-  tempObj.push({ name: text, cards: [] })
+
   e.target.reset()
-  axios.post("/api/addList", {
-    boardId,
-    listName: text
-  })
+
   return {
     type: ADD_LIST,
-    payload: tempObj
+    payload: axios
+      .post("/api/addList", {
+        boardId,
+        listName: text
+      })
+      .then(response => {
+        let newObj = {
+          id: response.data.cards[0].id,
+          lid: response.data.list[0].id,
+          cards: response.data.cards[0].cards,
+          name: response.data.list[0].name,
+          bid: response.data.list[0].bid
+        }
+        tempObj.push(newObj)
+        return tempObj
+      })
   }
 }
