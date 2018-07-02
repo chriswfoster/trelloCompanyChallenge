@@ -37,15 +37,15 @@ return(
         onOpenChange={this.onOpenChange}
         style={{ width: 256 }}
       >
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
+        <SubMenu key="sub1" title={<span><Icon type="info-circle" /><span>General info:</span></span>}>
+          <Menu.Item key="1">What does this site do?</Menu.Item>
+          <Menu.Item key="2">Why build this?</Menu.Item>
           <Menu.Item key="3">Option 3</Menu.Item>
           <Menu.Item key="4">Option 4</Menu.Item>
         </SubMenu>
-        <SubMenu key="sub2" title={<span><Icon type="info-circle" /><span>General info:</span></span>}>
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
+        <SubMenu key="sub2" title={<span><Icon type="double-right" /><span>Navigation:</span></span>}>
+          <Menu.Item key="5">Home</Menu.Item>
+          <Menu.Item key="6">Boards</Menu.Item>
         </SubMenu>
         <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Tech used in this project:</span></span>}>
           <Menu.Item key="9">Primarily Javascript</Menu.Item>
