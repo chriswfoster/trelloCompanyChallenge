@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import Header from "../../Header/Header"
 import "./about.css"
+import Why from './Why'
+import What from './What'
 
 import { Link } from "react-router-dom"
 import { Menu, Icon } from "antd"
@@ -10,7 +12,8 @@ class About extends Component {
   rootSubmenuKeys = ["sub1", "sub2", "sub4"]
 
   state = {
-    openKeys: ["sub1"]
+    openKeys: ["sub1"],
+    readingText: <What />
   }
 
   onOpenChange = openKeys => {
@@ -24,6 +27,10 @@ class About extends Component {
         openKeys: latestOpenKey ? [latestOpenKey] : []
       })
     }
+  }
+
+  generalInfo(val) {
+    this.setState({ readingText: val })
   }
 
   render() {
@@ -46,10 +53,8 @@ class About extends Component {
               </span>
             }
           >
-            <Menu.Item key="1">What does this site do?</Menu.Item>
-            <Menu.Item key="2">Why build this?</Menu.Item>
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
+            <Menu.Item key="1" onClick={()=> this.generalInfo(<What />)}>What does this site do?</Menu.Item>
+            <Menu.Item key="2" onClick={()=> this.generalInfo(<Why />)}>Why build this?</Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -140,6 +145,7 @@ class About extends Component {
             <Menu.Item key="20">And more...</Menu.Item>
           </SubMenu>
         </Menu>
+        {this.state.readingText}
       </div>
     )
   }
